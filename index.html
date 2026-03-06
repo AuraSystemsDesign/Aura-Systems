@@ -14,7 +14,7 @@
     --deep: #1C1410;
     --charcoal: #3A2E28;
     --muted: #8A7A72;
-    --gold: #B89A6E; 
+    --gold: #B89A6E;
     --white: #FFFFFF;
   }
 
@@ -953,6 +953,107 @@
 
   .reveal.visible { opacity: 1; transform: none; }
 
+  /* BILLING TOGGLE */
+  .billing-toggle-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .toggle-label {
+    font-size: 0.88rem;
+    color: var(--muted);
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .toggle-label.active { color: var(--deep); font-weight: 500; }
+
+  .save-badge {
+    background: var(--rose);
+    color: white;
+    font-size: 0.65rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 20px;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+  }
+
+  .billing-toggle {
+    width: 52px;
+    height: 28px;
+    background: var(--blush);
+    border-radius: 20px;
+    cursor: pointer;
+    position: relative;
+    transition: background 0.3s;
+  }
+
+  .billing-toggle.annual { background: var(--rose); }
+
+  .toggle-knob {
+    width: 22px;
+    height: 22px;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    transition: transform 0.3s;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  }
+
+  .billing-toggle.annual .toggle-knob { transform: translateX(24px); }
+
+  .price-setup small {
+    font-size: 0.7rem;
+    font-weight: 300;
+    color: var(--muted);
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .package-card.featured .price-setup small { color: rgba(250,247,242,0.5); }
+
+  .price-commitment {
+    display: block;
+    font-size: 0.72rem;
+    color: var(--rose);
+    margin-top: 0.3rem;
+    font-weight: 500;
+    min-height: 1rem;
+  }
+
+  .package-card.featured .price-commitment { color: var(--blush); }
+
+  /* POLICY NOTE */
+  .policy-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    background: rgba(196,133,106,0.08);
+    border: 1px solid rgba(196,133,106,0.2);
+    border-radius: 4px;
+    padding: 1.25rem 1.5rem;
+    margin-top: 2.5rem;
+    max-width: 860px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .policy-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 0.1rem; }
+
+  .policy-text {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .policy-text strong { color: var(--charcoal); }
+
   /* RESPONSIVE */
   @media (max-width: 900px) {
     nav { padding: 1.25rem 2rem; }
@@ -972,6 +1073,36 @@
     .form-row { grid-template-columns: 1fr; }
     footer { grid-template-columns: 1fr; padding: 3rem 2rem; }
   }
+
+  .package-section-label {
+    font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--gold); margin: 1.25rem 0 0.6rem; font-weight: 500;
+  }
+  .package-card.featured .package-section-label { color: rgba(249,245,238,0.5); }
+
+  .packages-footer {
+    margin-top: 3rem;
+    background: rgba(44,31,20,0.04);
+    border: 1px solid var(--sand);
+    padding: 2rem 2.5rem;
+  }
+  .pf-title {
+    font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--mocha); margin-bottom: 1.25rem; text-align: center;
+  }
+  .pf-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem 2rem;
+  }
+  .pf-item {
+    font-size: 0.82rem; color: var(--mocha); display: flex;
+    align-items: center; gap: 0.5rem;
+  }
+  .pf-icon { color: var(--gold); font-size: 0.5rem; }
+
+  @media (max-width: 768px) {
+    .pf-grid { grid-template-columns: 1fr 1fr; }
+  }
+
 </style>
 </head>
 <body>
@@ -1121,67 +1252,146 @@
 <section id="packages">
   <div class="section-label">Pricing</div>
   <h2>Simple packages.<br><em>Real results.</em></h2>
-  <p class="section-sub">Pick the plan that fits where your business is now — and upgrade whenever you're ready.</p>
+  <p class="section-sub">Pick the plan that fits your business right now. Every package is fully built and managed for you — no tech knowledge needed. Choose monthly rolling flexibility or commit to 12 months and save.</p>
+
+  <!-- BILLING TOGGLE -->
+  <div class="billing-toggle-wrapper">
+    <span class="toggle-label" id="label-monthly">Monthly Rolling</span>
+    <div class="billing-toggle" onclick="toggleBilling()">
+      <div class="toggle-knob" id="toggle-knob"></div>
+    </div>
+    <span class="toggle-label" id="label-annual">12 Month Plan <span class="save-badge">Save ~20%</span></span>
+  </div>
+
   <div class="packages-grid reveal">
 
+    <!-- PRESENCE -->
     <div class="package-card">
       <div class="package-name">Starter</div>
       <div class="package-title">Presence</div>
       <div class="package-price">
-        <span class="price-setup">£299</span>
-        <span class="price-monthly">+ £29 / month</span>
+        <span class="price-setup">£499 <small>one-off setup</small></span>
+        <span class="price-monthly">
+          + <span class="price-val" data-monthly="£69" data-annual="£55">£69</span> / month
+        </span>
+        <span class="price-commitment" id="commitment-presence"></span>
       </div>
+
+      <div class="package-section-label">We build you</div>
       <ul class="package-features">
-        <li>Custom designed website</li>
-        <li>Up to 5 pages (Home, Services, Gallery, About, Contact)</li>
-        <li>Mobile-optimised & fast loading</li>
-        <li>Google Business integration</li>
-        <li>Social media links</li>
-        <li>Contact form</li>
-        <li>Hosting & SSL included</li>
+        <li>Custom designed website — built from scratch for your brand</li>
+        <li>Up to 6 pages (Home, Services, Gallery, About, Team, Contact)</li>
+        <li>Mobile-optimised &amp; fast loading</li>
+        <li>Google Business profile integration</li>
+        <li>Social media links &amp; enquiry form</li>
+        <li>SSL certificate &amp; secure hosting setup</li>
       </ul>
-      <a href="#demo" class="btn-package" onclick="selectPackage('Presence')">Book a Demo</a>
+
+      <div class="package-section-label">Monthly subscription includes</div>
+      <ul class="package-features">
+        <li>&#9679; Hosting &amp; domain management</li>
+        <li>&#9679; Security &amp; software updates</li>
+        <li>&#9679; Monthly content &amp; text updates (up to 2 changes/mo)</li>
+        <li>&#9679; Performance monitoring</li>
+        <li>&#9679; Email &amp; WhatsApp support</li>
+      </ul>
+
+      <a href="#contact" class="btn-package" onclick="selectPackage('Presence')">Get Started</a>
     </div>
 
+    <!-- BOOKABLE -->
     <div class="package-card featured">
       <div class="package-badge">Most Popular</div>
       <div class="package-name">Growth</div>
       <div class="package-title">Bookable</div>
       <div class="package-price">
-        <span class="price-setup">£599</span>
-        <span class="price-monthly">+ £59 / month</span>
+        <span class="price-setup">£799 <small>one-off setup</small></span>
+        <span class="price-monthly">
+          + <span class="price-val" data-monthly="£119" data-annual="£95">£119</span> / month
+        </span>
+        <span class="price-commitment" id="commitment-bookable"></span>
       </div>
+
+      <div class="package-section-label">We build you</div>
       <ul class="package-features">
         <li>Everything in Presence</li>
-        <li>Online booking calendar</li>
-        <li>Service menu with pricing</li>
-        <li>Deposit collection upfront</li>
-        <li>Automated confirmation emails</li>
-        <li>Client appointment history</li>
-        <li>SMS & email reminders</li>
+        <li>Online booking calendar with real-time availability</li>
+        <li>Service menu with live pricing &amp; durations</li>
+        <li>Deposit collection to reduce no-shows</li>
+        <li>Automated booking confirmations &amp; reminders</li>
+        <li>Cancellation &amp; rescheduling policy setup</li>
       </ul>
-      <a href="#demo" class="btn-package" onclick="selectPackage('Bookable')">Book a Demo</a>
+
+      <div class="package-section-label">Monthly subscription includes</div>
+      <ul class="package-features">
+        <li>&#9679; Everything in Presence monthly plan</li>
+        <li>&#9679; Booking system management &amp; updates</li>
+        <li>&#9679; Service &amp; pricing updates on request</li>
+        <li>&#9679; Deposit &amp; cancellation policy updates</li>
+        <li>&#9679; Priority email &amp; WhatsApp support</li>
+      </ul>
+
+      <a href="#contact" class="btn-package" onclick="selectPackage('Bookable')">Get Started</a>
     </div>
 
+    <!-- FULL SUITE -->
     <div class="package-card">
       <div class="package-name">Pro</div>
       <div class="package-title">Full Suite</div>
       <div class="package-price">
-        <span class="price-setup">£999</span>
-        <span class="price-monthly">+ £99 / month</span>
+        <span class="price-setup">£1,199 <small>one-off setup</small></span>
+        <span class="price-monthly">
+          + <span class="price-val" data-monthly="£179" data-annual="£145">£179</span> / month
+        </span>
+        <span class="price-commitment" id="commitment-suite"></span>
       </div>
+
+      <div class="package-section-label">We build you</div>
       <ul class="package-features">
         <li>Everything in Bookable</li>
-        <li>Full payment processing online</li>
-        <li>Client CRM & profiles</li>
-        <li>Revenue & profit dashboard</li>
-        <li>Performance analytics</li>
-        <li>No-show protection tools</li>
-        <li>Priority support & onboarding</li>
+        <li>Full client CRM — built &amp; configured for your business</li>
+        <li>Revenue &amp; bookings dashboard</li>
+        <li>Business performance analytics</li>
+        <li>No-show protection &amp; deposit tools</li>
+        <li>Full onboarding call &amp; staff walkthrough</li>
       </ul>
-      <a href="#demo" class="btn-package" onclick="selectPackage('Full Suite')">Book a Demo</a>
+
+      <div class="package-section-label">Monthly subscription includes</div>
+      <ul class="package-features">
+        <li>&#9679; Everything in Bookable monthly plan</li>
+        <li>&#9679; CRM setup, maintenance &amp; ongoing support</li>
+        <li>&#9679; Monthly analytics report sent to you</li>
+        <li>&#9679; Unlimited content &amp; pricing updates</li>
+        <li>&#9679; Priority support — fastest response times</li>
+      </ul>
+
+      <a href="#contact" class="btn-package" onclick="selectPackage('Full Suite')">Get Started</a>
     </div>
 
+  </div>
+
+  <!-- WHAT'S ALWAYS INCLUDED -->
+  <div class="packages-footer reveal">
+    <div class="pf-title">Every package includes</div>
+    <div class="pf-grid">
+      <div class="pf-item"><span class="pf-icon">&#9679;</span> Custom design — no templates</div>
+      <div class="pf-item"><span class="pf-icon">&#9679;</span> Hosted &amp; managed by us</div>
+      <div class="pf-item"><span class="pf-icon">&#9679;</span> SSL security certificate</div>
+      <div class="pf-item"><span class="pf-icon">&#9679;</span> Mobile &amp; tablet optimised</div>
+      <div class="pf-item"><span class="pf-icon">&#9679;</span> Monthly updates included</div>
+      <div class="pf-item"><span class="pf-icon">&#9679;</span> Your data is always yours</div>
+    </div>
+  </div>
+
+  <!-- CANCELLATION POLICY -->
+  <div class="policy-note">
+    <div class="policy-icon">&#8505;&#65039;</div>
+    <div class="policy-text">
+      <strong>Transparent cancellation policy:</strong> Setup fees are non-refundable — they cover your design &amp; build.
+      Monthly rolling plans require 30 days written notice to cancel.
+      On the 12 month plan, early cancellation is charged at 50% of remaining months.
+      On cancellation, your website stays live — booking &amp; CRM systems deactivate. Your client data is always exported and returned to you before deactivation.
+    </div>
   </div>
 </section>
 
@@ -1346,6 +1556,38 @@
 </div>
 
 <script>
+  // Billing toggle
+  let isAnnual = false;
+
+  function toggleBilling() {
+    isAnnual = !isAnnual;
+    const toggle = document.querySelector('.billing-toggle');
+    const labelMonthly = document.getElementById('label-monthly');
+    const labelAnnual = document.getElementById('label-annual');
+
+    toggle.classList.toggle('annual', isAnnual);
+
+    labelMonthly.classList.toggle('active', !isAnnual);
+    labelAnnual.classList.toggle('active', isAnnual);
+
+    // Update all prices
+    document.querySelectorAll('.price-val').forEach(el => {
+      el.textContent = isAnnual ? el.dataset.annual : el.dataset.monthly;
+    });
+
+    // Update commitment labels
+    const commitments = ['commitment-presence', 'commitment-bookable', 'commitment-suite'];
+    commitments.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = isAnnual ? '12 month minimum term' : 'Rolling monthly · 30 days notice to cancel';
+    });
+  }
+
+  // Set monthly as active on load
+  document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('label-monthly').classList.add('active');
+  });
+
   // Package selection
   let selectedPackage = 'Bookable';
 
