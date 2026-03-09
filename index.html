@@ -20,13 +20,14 @@
 
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; overflow-x: hidden; }
 
   body {
     font-family: 'DM Sans', sans-serif;
     background: var(--cream);
     color: var(--deep);
     overflow-x: hidden;
+    width: 100%;
   }
 
   /* NOISE TEXTURE OVERLAY */
@@ -342,6 +343,9 @@
     grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
     text-align: center;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
   }
 
   .stat-item .number {
@@ -365,6 +369,13 @@
   /* SECTION SHARED */
   section {
     padding: 6rem 4rem;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .stats-band {
+    width: 100%;
+    max-width: 100%;
   }
 
   .section-label {
@@ -895,6 +906,9 @@
     grid-template-columns: 2fr 1fr 1fr 1fr;
     gap: 3rem;
     border-top: 1px solid rgba(196,133,106,0.1);
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
   }
 
   .footer-brand .logo { font-size: 1.4rem; color: var(--cream); }
@@ -1072,7 +1086,10 @@
     .demo-package-select { grid-template-columns: 1fr; }
     .form-row { grid-template-columns: 1fr; }
     footer { grid-template-columns: 1fr; padding: 3rem 2rem; }
-    #who > div[style*="grid-template-columns: repeat(3"] { grid-template-columns: 1fr 1fr !important; }
+    #who > div[style*="grid-template-columns:1fr 1fr"],
+    #problem > div[style*="grid-template-columns:1fr 1fr"],
+    #solution > div[style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; }
+    #showcase > div[style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; }
   }
 
   .package-section-label {
@@ -1135,56 +1152,49 @@
     <p style="font-size:0.78rem; color:var(--muted); margin-top:1rem; letter-spacing:0.03em;">See how your own branded beauty business system could work.</p>
   </div>
   <div class="hero-right">
-    <div class="hero-mockup">
-      <div class="mockup-bar">
-        <div class="mockup-dot"></div>
-        <div class="mockup-dot"></div>
-        <div class="mockup-dot"></div>
+    <div class="hero-mockup" style="max-width:480px; border-radius:12px;">
+      <div class="mockup-bar" style="justify-content:space-between; padding:0.6rem 1rem;">
+        <div style="display:flex;gap:0.4rem;">
+          <div class="mockup-dot"></div>
+          <div class="mockup-dot"></div>
+          <div class="mockup-dot"></div>
+        </div>
+        <span style="font-size:0.65rem;color:rgba(250,247,242,0.45);letter-spacing:0.1em;">AURA DASHBOARD</span>
+        <div style="width:36px;"></div>
       </div>
-      <div class="mockup-body">
-        <div class="mockup-header-strip">
-          <h3>Glamour Studio</h3>
-          <p>Dashboard · Today's Overview</p>
-        </div>
-        <div class="mockup-stats">
-          <div class="mockup-stat">
-            <span class="val">£1,840</span>
-            <span class="lbl">Revenue</span>
-          </div>
-          <div class="mockup-stat">
-            <span class="val">12</span>
-            <span class="lbl">Bookings</span>
-          </div>
-          <div class="mockup-stat">
-            <span class="val">£340</span>
-            <span class="lbl">Deposits</span>
+      <div class="mockup-body" style="padding:1.25rem;">
+        <div style="margin-bottom:1rem;">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#1C1410;font-weight:400;">Good morning, <em style="color:#C4856A;">Isabelle.</em></div>
+          <div style="font-size:0.7rem;color:#8A7A72;margin-top:0.2rem;">Here's how your business is performing this month.</div>
+          <div style="display:inline-flex;align-items:center;gap:0.4rem;margin-top:0.5rem;background:white;border:1px solid rgba(196,133,106,0.2);border-radius:20px;padding:0.25rem 0.75rem;">
+            <span style="width:6px;height:6px;border-radius:50%;background:#4CAF50;display:inline-block;"></span>
+            <span style="font-size:0.62rem;color:#8A7A72;">Live data from Supabase</span>
           </div>
         </div>
-        <div class="mockup-booking">
-          <div class="mockup-booking-title">Today's Appointments</div>
-          <div class="booking-slot">
-            <div class="slot-dot green"></div>
-            <div class="slot-info">
-              <div class="slot-name">Sarah M. — Lash Lift</div>
-              <div class="slot-time">9:00am · 45 min</div>
-            </div>
-            <div class="slot-price">£75</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;">
+          <div style="background:#4CAF50;border-radius:8px;padding:0.85rem;color:white;">
+            <div style="font-size:1rem;margin-bottom:0.25rem;">💰</div>
+            <div style="font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;opacity:0.85;margin-bottom:0.3rem;">Revenue This Month</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;line-height:1;">£2,340</div>
+            <div style="font-size:0.58rem;opacity:0.8;margin-top:0.2rem;">↑ Updated from bookings</div>
           </div>
-          <div class="booking-slot">
-            <div class="slot-dot"></div>
-            <div class="slot-info">
-              <div class="slot-name">Emma R. — Facial</div>
-              <div class="slot-time">10:30am · 60 min</div>
-            </div>
-            <div class="slot-price">£90</div>
+          <div style="background:#F5A623;border-radius:8px;padding:0.85rem;color:white;">
+            <div style="font-size:1rem;margin-bottom:0.25rem;">📅</div>
+            <div style="font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;opacity:0.85;margin-bottom:0.3rem;">Bookings This Month</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;line-height:1;">24</div>
+            <div style="font-size:0.58rem;opacity:0.8;margin-top:0.2rem;">24 this month</div>
           </div>
-          <div class="booking-slot">
-            <div class="slot-dot gold"></div>
-            <div class="slot-info">
-              <div class="slot-name">Jade T. — Nails</div>
-              <div class="slot-time">12:00pm · 90 min</div>
-            </div>
-            <div class="slot-price">£65</div>
+          <div style="background:#E53935;border-radius:8px;padding:0.85rem;color:white;">
+            <div style="font-size:1rem;margin-bottom:0.25rem;">🚫</div>
+            <div style="font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;opacity:0.85;margin-bottom:0.3rem;">No-Shows</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;line-height:1;">0</div>
+            <div style="font-size:0.58rem;opacity:0.8;margin-top:0.2rem;">0 this month</div>
+          </div>
+          <div style="background:#3B82F6;border-radius:8px;padding:0.85rem;color:white;">
+            <div style="font-size:1rem;margin-bottom:0.25rem;">⭐</div>
+            <div style="font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;opacity:0.85;margin-bottom:0.3rem;">Avg. Booking Value</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;line-height:1;">£64</div>
+            <div style="font-size:0.58rem;opacity:0.8;margin-top:0.2rem;">Per appointment</div>
           </div>
         </div>
       </div>
@@ -1212,20 +1222,255 @@
   </div>
 </div>
 
-<!-- THE PROBLEM -->
+<!-- SYSTEM SHOWCASE -->
+<section id="showcase" style="background:var(--white); padding:6rem 4rem; overflow:hidden;">
+  <div class="section-label">Inside the platform</div>
+  <h2>Everything visible,<br><em>all in one system</em></h2>
+  <p class="section-sub">A real look at what your branded business platform includes — from client bookings to staff management.</p>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem;" class="reveal">
+
+    <!-- WINDOW 1: Dashboard -->
+    <div style="background:#fff; border-radius:12px; box-shadow:0 8px 40px rgba(28,20,16,0.1); overflow:hidden; border:1px solid rgba(196,133,106,0.15);">
+      <div style="background:#1C1410; padding:0.6rem 1rem; display:flex; align-items:center; gap:0.4rem;">
+        <span style="width:10px;height:10px;border-radius:50%;background:#FF5F57;display:inline-block;"></span>
+        <span style="width:10px;height:10px;border-radius:50%;background:#FFBD2E;display:inline-block;"></span>
+        <span style="width:10px;height:10px;border-radius:50%;background:#28C840;display:inline-block;"></span>
+        <span style="font-size:0.6rem;color:rgba(250,247,242,0.4);letter-spacing:0.1em;margin-left:0.5rem;">CLIENT DASHBOARD</span>
+      </div>
+      <div style="padding:1.25rem;">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:#1C1410;margin-bottom:0.2rem;">Good morning, <em style="color:#C4856A;">Isabelle.</em></div>
+        <div style="font-size:0.68rem;color:#8A7A72;margin-bottom:0.75rem;">Here's how your business is performing this month.</div>
+        <div style="display:inline-flex;align-items:center;gap:0.4rem;background:#FAF7F2;border:1px solid rgba(196,133,106,0.2);border-radius:20px;padding:0.2rem 0.65rem;margin-bottom:1rem;">
+          <span style="width:6px;height:6px;border-radius:50%;background:#4CAF50;display:inline-block;"></span>
+          <span style="font-size:0.6rem;color:#8A7A72;">Live data from Supabase</span>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;">
+          <div style="background:#4CAF50;border-radius:8px;padding:0.75rem;color:white;">
+            <div style="font-size:0.85rem;margin-bottom:0.2rem;">💰</div>
+            <div style="font-size:0.5rem;letter-spacing:0.1em;text-transform:uppercase;opacity:0.85;margin-bottom:0.25rem;">Revenue This Month</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;line-height:1;">£2,340</div>
+            <div style="font-size:0.55rem;opacity:0.75;margin-top:0.15rem;">↑ Updated from bookings</div>
+          </div>
+          <div style="background:#F5A623;border-radius:8px;padding:0.75rem;color:white;">
+            <div style="font-size:0.85rem;margin-bottom:0.2rem;">📅</div>
+            <div style="font-size:0.5rem;letter-spacing:0.1em;text-transform:uppercase;opacity:0.85;margin-bottom:0.25rem;">Bookings This Month</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;line-height:1;">24</div>
+            <div style="font-size:0.55rem;opacity:0.75;margin-top:0.15rem;">24 this month</div>
+          </div>
+          <div style="background:#E53935;border-radius:8px;padding:0.75rem;color:white;">
+            <div style="font-size:0.85rem;margin-bottom:0.2rem;">🚫</div>
+            <div style="font-size:0.5rem;letter-spacing:0.1em;text-transform:uppercase;opacity:0.85;margin-bottom:0.25rem;">No-Shows</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;line-height:1;">0</div>
+            <div style="font-size:0.55rem;opacity:0.75;margin-top:0.15rem;">0 this month</div>
+          </div>
+          <div style="background:#3B82F6;border-radius:8px;padding:0.75rem;color:white;">
+            <div style="font-size:0.85rem;margin-bottom:0.2rem;">⭐</div>
+            <div style="font-size:0.5rem;letter-spacing:0.1em;text-transform:uppercase;opacity:0.85;margin-bottom:0.25rem;">Avg. Booking Value</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;line-height:1;">£64</div>
+            <div style="font-size:0.55rem;opacity:0.75;margin-top:0.15rem;">Per appointment</div>
+          </div>
+        </div>
+      </div>
+      <div style="padding:0.6rem 1.25rem 1rem; font-size:0.72rem; color:#C4856A; font-weight:500; letter-spacing:0.04em;">📊 Business Overview Dashboard</div>
+    </div>
+
+    <!-- WINDOW 2: Staff Dashboard -->
+    <div style="background:#fff; border-radius:12px; box-shadow:0 8px 40px rgba(28,20,16,0.1); overflow:hidden; border:1px solid rgba(196,133,106,0.15);">
+      <div style="background:#1C1410; padding:0.6rem 1rem; display:flex; align-items:center; gap:0.4rem;">
+        <span style="width:10px;height:10px;border-radius:50%;background:#FF5F57;display:inline-block;"></span>
+        <span style="width:10px;height:10px;border-radius:50%;background:#FFBD2E;display:inline-block;"></span>
+        <span style="width:10px;height:10px;border-radius:50%;background:#28C840;display:inline-block;"></span>
+        <span style="font-size:0.6rem;color:rgba(250,247,242,0.4);letter-spacing:0.1em;margin-left:0.5rem;">STAFF DASHBOARD</span>
+      </div>
+      <div style="padding:1.25rem;">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:#1C1410;margin-bottom:0.15rem;">Staff <em style="color:#C4856A;">Dashboard</em></div>
+        <div style="font-size:0.68rem;color:#8A7A72;margin-bottom:1rem;">Workload, capacity, revenue and calendar — all in one place.</div>
+        <div style="display:flex;gap:0.35rem;flex-wrap:wrap;margin-bottom:1rem;">
+          <span style="background:#1C1410;color:#FAF7F2;font-size:0.55rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.3rem 0.6rem;border-radius:2px;">📊 Workload</span>
+          <span style="background:#FAF7F2;color:#8A7A72;font-size:0.55rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.3rem 0.6rem;border-radius:2px;border:1px solid rgba(196,133,106,0.2);">Capacity</span>
+          <span style="background:#FAF7F2;color:#8A7A72;font-size:0.55rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.3rem 0.6rem;border-radius:2px;border:1px solid rgba(196,133,106,0.2);">Calendar</span>
+          <span style="background:#FAF7F2;color:#8A7A72;font-size:0.55rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.3rem 0.6rem;border-radius:2px;border:1px solid rgba(196,133,106,0.2);">Revenue</span>
+          <span style="background:#FAF7F2;color:#8A7A72;font-size:0.55rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.3rem 0.6rem;border-radius:2px;border:1px solid rgba(196,133,106,0.2);">Manage Staff</span>
+        </div>
+        <div style="background:#FAF7F2;border:1px solid rgba(196,133,106,0.12);border-radius:8px;padding:1rem;">
+          <div style="font-size:0.72rem;font-weight:500;color:#1C1410;margin-bottom:0.15rem;">Free Slots Remaining</div>
+          <div style="font-size:0.62rem;color:#8A7A72;margin-bottom:0.8rem;">Available appointments this week</div>
+          <div style="display:flex;align-items:center;gap:1rem;">
+            <svg viewBox="0 0 100 100" width="80" height="80" style="flex-shrink:0;">
+              <circle cx="50" cy="50" r="38" fill="none" stroke="#eee" stroke-width="12"/>
+              <circle cx="50" cy="50" r="38" fill="none" stroke="#3B82F6" stroke-width="12" stroke-dasharray="36 200" stroke-dashoffset="0" transform="rotate(-90 50 50)"/>
+              <circle cx="50" cy="50" r="38" fill="none" stroke="#4CAF50" stroke-width="12" stroke-dasharray="43 200" stroke-dashoffset="-36" transform="rotate(-90 50 50)"/>
+              <circle cx="50" cy="50" r="38" fill="none" stroke="#F5A623" stroke-width="12" stroke-dasharray="83 200" stroke-dashoffset="-79" transform="rotate(-90 50 50)"/>
+              <circle cx="50" cy="50" r="38" fill="none" stroke="#E91E8C" stroke-width="12" stroke-dasharray="76 200" stroke-dashoffset="-162" transform="rotate(-90 50 50)"/>
+              <text x="50" y="46" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="14" fill="#1C1410" font-weight="600">62</text>
+              <text x="50" y="56" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="5" fill="#8A7A72" letter-spacing="1">FREE SLOTS</text>
+            </svg>
+            <div style="display:grid;gap:0.35rem;">
+              <div style="display:flex;align-items:center;gap:0.4rem;font-size:0.65rem;color:#3A2E28;"><span style="width:10px;height:10px;border-radius:2px;background:#3B82F6;display:inline-block;flex-shrink:0;"></span>Emma</div>
+              <div style="display:flex;align-items:center;gap:0.4rem;font-size:0.65rem;color:#3A2E28;"><span style="width:10px;height:10px;border-radius:2px;background:#4CAF50;display:inline-block;flex-shrink:0;"></span>Sophie</div>
+              <div style="display:flex;align-items:center;gap:0.4rem;font-size:0.65rem;color:#3A2E28;"><span style="width:10px;height:10px;border-radius:2px;background:#F5A623;display:inline-block;flex-shrink:0;"></span>Anna</div>
+              <div style="display:flex;align-items:center;gap:0.4rem;font-size:0.65rem;color:#3A2E28;"><span style="width:10px;height:10px;border-radius:2px;background:#E91E8C;display:inline-block;flex-shrink:0;"></span>Mia</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="padding:0.6rem 1.25rem 1rem; font-size:0.72rem; color:#C4856A; font-weight:500; letter-spacing:0.04em;">👥 Staff Capacity & Workload View</div>
+    </div>
+
+    <!-- WINDOW 3: Capacity bars -->
+    <div style="background:#fff; border-radius:12px; box-shadow:0 8px 40px rgba(28,20,16,0.1); overflow:hidden; border:1px solid rgba(196,133,106,0.15);">
+      <div style="background:#1C1410; padding:0.6rem 1rem; display:flex; align-items:center; gap:0.4rem;">
+        <span style="width:10px;height:10px;border-radius:50%;background:#FF5F57;display:inline-block;"></span>
+        <span style="width:10px;height:10px;border-radius:50%;background:#FFBD2E;display:inline-block;"></span>
+        <span style="width:10px;height:10px;border-radius:50%;background:#28C840;display:inline-block;"></span>
+        <span style="font-size:0.6rem;color:rgba(250,247,242,0.4);letter-spacing:0.1em;margin-left:0.5rem;">CAPACITY MANAGEMENT</span>
+      </div>
+      <div style="padding:1.25rem;">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:#1C1410;margin-bottom:0.15rem;">Team <em style="color:#C4856A;">Availability</em></div>
+        <div style="font-size:0.68rem;color:#8A7A72;margin-bottom:1rem;">Live booking capacity across your team this week.</div>
+        <div style="display:grid;gap:0.75rem;margin-bottom:1rem;">
+          <div style="display:flex;align-items:center;gap:0.75rem;">
+            <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#3B82F6,#1D4ED8);color:white;font-size:0.7rem;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;">E</div>
+            <div style="flex:1;">
+              <div style="display:flex;justify-content:space-between;margin-bottom:0.3rem;"><span style="font-size:0.72rem;color:#1C1410;font-weight:500;">Emma</span><span style="font-size:0.65rem;color:#8A7A72;">4 booked</span></div>
+              <div style="background:#e8e8e8;border-radius:4px;height:7px;overflow:hidden;"><div style="width:28%;height:100%;background:#3B82F6;border-radius:4px;"></div></div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:0.75rem;">
+            <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#4CAF50,#2E7D32);color:white;font-size:0.7rem;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;">S</div>
+            <div style="flex:1;">
+              <div style="display:flex;justify-content:space-between;margin-bottom:0.3rem;"><span style="font-size:0.72rem;color:#1C1410;font-weight:500;">Sophie</span><span style="font-size:0.65rem;color:#8A7A72;">6 booked</span></div>
+              <div style="background:#e8e8e8;border-radius:4px;height:7px;overflow:hidden;"><div style="width:42%;height:100%;background:#4CAF50;border-radius:4px;"></div></div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:0.75rem;">
+            <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#F5A623,#D4860B);color:white;font-size:0.7rem;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;">A</div>
+            <div style="flex:1;">
+              <div style="display:flex;justify-content:space-between;margin-bottom:0.3rem;"><span style="font-size:0.72rem;color:#1C1410;font-weight:500;">Anna</span><span style="font-size:0.65rem;color:#8A7A72;">9 booked</span></div>
+              <div style="background:#e8e8e8;border-radius:4px;height:7px;overflow:hidden;"><div style="width:65%;height:100%;background:#F5A623;border-radius:4px;"></div></div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:0.75rem;">
+            <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#E91E8C,#880E4F);color:white;font-size:0.7rem;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;">M</div>
+            <div style="flex:1;">
+              <div style="display:flex;justify-content:space-between;margin-bottom:0.3rem;"><span style="font-size:0.72rem;color:#1C1410;font-weight:500;">Mia</span><span style="font-size:0.65rem;color:#8A7A72;">8 booked</span></div>
+              <div style="background:#e8e8e8;border-radius:4px;height:7px;overflow:hidden;"><div style="width:55%;height:100%;background:#E91E8C;border-radius:4px;"></div></div>
+            </div>
+          </div>
+        </div>
+        <div style="background:#FAF7F2;border-radius:6px;padding:0.75rem;display:flex;justify-content:space-around;">
+          <div style="text-align:center;"><div style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:#C4856A;">62</div><div style="font-size:0.58rem;color:#8A7A72;text-transform:uppercase;letter-spacing:0.08em;">Free Slots</div></div>
+          <div style="text-align:center;"><div style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:#1C1410;">27</div><div style="font-size:0.58rem;color:#8A7A72;text-transform:uppercase;letter-spacing:0.08em;">Booked</div></div>
+          <div style="text-align:center;"><div style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:#4CAF50;">30%</div><div style="font-size:0.58rem;color:#8A7A72;text-transform:uppercase;letter-spacing:0.08em;">Fill Rate</div></div>
+        </div>
+      </div>
+      <div style="padding:0.6rem 1.25rem 1rem; font-size:0.72rem; color:#C4856A; font-weight:500; letter-spacing:0.04em;">🗓 Real-Time Availability Tracking</div>
+    </div>
+
+    <!-- WINDOW 4: Client Booking Flow -->
+    <div style="background:#fff; border-radius:12px; box-shadow:0 8px 40px rgba(28,20,16,0.1); overflow:hidden; border:1px solid rgba(196,133,106,0.15);">
+      <div style="background:#1C1410; padding:0.6rem 1rem; display:flex; align-items:center; gap:0.4rem;">
+        <span style="width:10px;height:10px;border-radius:50%;background:#FF5F57;display:inline-block;"></span>
+        <span style="width:10px;height:10px;border-radius:50%;background:#FFBD2E;display:inline-block;"></span>
+        <span style="width:10px;height:10px;border-radius:50%;background:#28C840;display:inline-block;"></span>
+        <span style="font-size:0.6rem;color:rgba(250,247,242,0.4);letter-spacing:0.1em;margin-left:0.5rem;">CLIENT BOOKING PORTAL</span>
+      </div>
+      <div style="background:#1C1410;padding:0.9rem 1.25rem;">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:#FAF7F2;font-weight:400;">Book Your Appointment</div>
+        <div style="font-size:0.65rem;color:rgba(250,247,242,0.45);margin-top:0.2rem;">Lumière Beauty Studio · Hull</div>
+      </div>
+      <div style="padding:1rem 1.25rem;">
+        <div style="display:flex;align-items:center;gap:0;margin-bottom:1rem;">
+          <div style="width:26px;height:26px;border-radius:50%;background:#3A2E28;color:#FAF7F2;font-size:0.68rem;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;">1</div>
+          <div style="flex:1;height:1px;background:rgba(196,133,106,0.2);"></div>
+          <div style="width:26px;height:26px;border-radius:50%;border:1px solid rgba(196,133,106,0.3);color:#8A7A72;font-size:0.68rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;">2</div>
+          <div style="flex:1;height:1px;background:rgba(196,133,106,0.2);"></div>
+          <div style="width:26px;height:26px;border-radius:50%;border:1px solid rgba(196,133,106,0.3);color:#8A7A72;font-size:0.68rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;">3</div>
+          <div style="flex:1;height:1px;background:rgba(196,133,106,0.2);"></div>
+          <div style="width:26px;height:26px;border-radius:50%;border:1px solid rgba(196,133,106,0.3);color:#8A7A72;font-size:0.68rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;">4</div>
+        </div>
+        <div style="font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:#8A7A72;margin-bottom:0.75rem;">Choose Your Service</div>
+        <div style="display:grid;gap:0.4rem;">
+          <div style="display:flex;align-items:center;padding:0.6rem 0.75rem;border:1px solid rgba(196,133,106,0.18);border-radius:4px;gap:0.6rem;">
+            <span style="width:8px;height:8px;border-radius:50%;border:1.5px solid #8A7A72;flex-shrink:0;"></span>
+            <div style="flex:1;"><div style="font-size:0.78rem;color:#1C1410;">Lash Lift & Tint</div><div style="font-size:0.62rem;color:#8A7A72;">45 min</div></div>
+            <div style="font-size:0.78rem;color:#1C1410;font-weight:500;">£55</div>
+          </div>
+          <div style="display:flex;align-items:center;padding:0.6rem 0.75rem;border:1.5px solid #3A2E28;border-radius:4px;gap:0.6rem;background:rgba(58,46,40,0.04);">
+            <span style="width:8px;height:8px;border-radius:50%;background:#3A2E28;flex-shrink:0;"></span>
+            <div style="flex:1;"><div style="font-size:0.78rem;color:#1C1410;font-weight:600;">Luxury Facial</div><div style="font-size:0.62rem;color:#8A7A72;">60 min</div></div>
+            <div style="font-size:0.78rem;color:#1C1410;font-weight:600;">£75</div>
+          </div>
+          <div style="display:flex;align-items:center;padding:0.6rem 0.75rem;border:1px solid rgba(196,133,106,0.18);border-radius:4px;gap:0.6rem;">
+            <span style="width:8px;height:8px;border-radius:50%;border:1.5px solid #8A7A72;flex-shrink:0;"></span>
+            <div style="flex:1;"><div style="font-size:0.78rem;color:#1C1410;">Gel Manicure</div><div style="font-size:0.62rem;color:#8A7A72;">60 min</div></div>
+            <div style="font-size:0.78rem;color:#1C1410;font-weight:500;">£45</div>
+          </div>
+          <div style="display:flex;align-items:center;padding:0.6rem 0.75rem;border:1px solid rgba(196,133,106,0.18);border-radius:4px;gap:0.6rem;">
+            <span style="width:8px;height:8px;border-radius:50%;border:1.5px solid #8A7A72;flex-shrink:0;"></span>
+            <div style="flex:1;"><div style="font-size:0.78rem;color:#1C1410;">Brow Sculpt & Tint</div><div style="font-size:0.62rem;color:#8A7A72;">30 min</div></div>
+            <div style="font-size:0.78rem;color:#1C1410;font-weight:500;">£35</div>
+          </div>
+        </div>
+        <div style="margin-top:0.75rem;text-align:right;">
+          <span style="background:#3A2E28;color:#FAF7F2;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.55rem 1.1rem;border-radius:2px;display:inline-block;">Continue →</span>
+        </div>
+      </div>
+      <div style="padding:0.6rem 1.25rem 1rem; font-size:0.72rem; color:#C4856A; font-weight:500; letter-spacing:0.04em;">✦ Client-Facing Booking Experience</div>
+    </div>
+
+  </div>
+</section>
 <section id="problem" style="background: var(--white);">
-  <div class="section-label">The problem</div>
-  <h2>Most beauty businesses rely on<br><em>platforms they do not control</em></h2>
-  <p class="section-sub">Many salons and beauty professionals rely on booking platforms that charge commission on every appointment and control access to their clients. While these platforms can help bring bookings, they also reduce profits and limit brand control.</p>
-  <p class="section-sub" style="margin-top:-2rem;">A modern beauty business needs more than just a website. It needs a digital system that manages bookings, services and clients in one place.</p>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center;">
+    <div>
+      <div class="section-label">The problem</div>
+      <h2>Most beauty businesses rely on<br><em>platforms they don't control</em></h2>
+      <p class="section-sub" style="margin-bottom:1.5rem;">Many salons and beauty professionals rely on booking platforms that charge commission on every appointment and control access to their clients.</p>
+      <p style="font-size:0.95rem; color:var(--charcoal); line-height:1.8; font-weight:300;">A modern beauty business needs more than just a website. It needs a digital system that manages bookings, services and clients — all under your own brand.</p>
+    </div>
+    <div style="display:grid; gap:1rem;">
+      <div style="background:#FEF2F2; border:1px solid #FECACA; border-radius:8px; padding:1.5rem; display:flex; align-items:flex-start; gap:1rem;">
+        <span style="font-size:1.5rem; flex-shrink:0;">💸</span>
+        <div><div style="font-weight:500; color:#1C1410; margin-bottom:0.3rem; font-size:0.9rem;">Commission on every booking</div><div style="font-size:0.82rem; color:#8A7A72; line-height:1.6;">Third-party platforms take a cut of each appointment, reducing your margins every time.</div></div>
+      </div>
+      <div style="background:#FEF2F2; border:1px solid #FECACA; border-radius:8px; padding:1.5rem; display:flex; align-items:flex-start; gap:1rem;">
+        <span style="font-size:1.5rem; flex-shrink:0;">🔒</span>
+        <div><div style="font-weight:500; color:#1C1410; margin-bottom:0.3rem; font-size:0.9rem;">You don't own your client data</div><div style="font-size:0.82rem; color:#8A7A72; line-height:1.6;">Platforms control access to your client list. If you leave, you lose the relationship.</div></div>
+      </div>
+      <div style="background:#FEF2F2; border:1px solid #FECACA; border-radius:8px; padding:1.5rem; display:flex; align-items:flex-start; gap:1rem;">
+        <span style="font-size:1.5rem; flex-shrink:0;">🎨</span>
+        <div><div style="font-weight:500; color:#1C1410; margin-bottom:0.3rem; font-size:0.9rem;">Generic, off-brand experience</div><div style="font-size:0.82rem; color:#8A7A72; line-height:1.6;">Clients book through someone else's platform — not your brand. That's not how premium businesses operate.</div></div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- THE SOLUTION -->
 <section id="solution" style="background: var(--cream);">
-  <div class="section-label">The solution</div>
-  <h2>A digital system built<br><em>around your brand</em></h2>
-  <p class="section-sub">Aura Systems Design creates custom websites that include integrated booking functionality, allowing clients to schedule appointments directly through your own website.</p>
-  <p class="section-sub" style="margin-top:-2rem;">Your platform is designed specifically for beauty businesses, combining elegant design with practical tools that help manage your daily operations. Instead of sending clients to third party platforms, everything happens within your own branded environment.</p>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center;">
+    <div style="display:grid; gap:1rem;">
+      <div style="background:var(--white); border:1px solid rgba(196,133,106,0.18); border-radius:8px; padding:1.5rem; display:flex; align-items:flex-start; gap:1rem;">
+        <span style="font-size:1.5rem; flex-shrink:0;">🌐</span>
+        <div><div style="font-weight:500; color:#1C1410; margin-bottom:0.3rem; font-size:0.9rem;">Your own branded website</div><div style="font-size:0.82rem; color:#8A7A72; line-height:1.6;">A custom site designed around your brand — not a template, not a directory listing.</div></div>
+      </div>
+      <div style="background:var(--white); border:1px solid rgba(196,133,106,0.18); border-radius:8px; padding:1.5rem; display:flex; align-items:flex-start; gap:1rem;">
+        <span style="font-size:1.5rem; flex-shrink:0;">📅</span>
+        <div><div style="font-weight:500; color:#1C1410; margin-bottom:0.3rem; font-size:0.9rem;">Booking built directly in</div><div style="font-size:0.82rem; color:#8A7A72; line-height:1.6;">Clients book, pay deposits and manage appointments without ever leaving your site.</div></div>
+      </div>
+      <div style="background:var(--white); border:1px solid rgba(196,133,106,0.18); border-radius:8px; padding:1.5rem; display:flex; align-items:flex-start; gap:1rem;">
+        <span style="font-size:1.5rem; flex-shrink:0;">👑</span>
+        <div><div style="font-weight:500; color:#1C1410; margin-bottom:0.3rem; font-size:0.9rem;">You keep full control</div><div style="font-size:0.82rem; color:#8A7A72; line-height:1.6;">Your clients, your data, your brand. No commissions, no middleman, no compromise.</div></div>
+      </div>
+    </div>
+    <div>
+      <div class="section-label">The solution</div>
+      <h2>A digital system built<br><em>around your brand</em></h2>
+      <p class="section-sub" style="margin-bottom:1.5rem;">Aura Systems Design creates custom websites with integrated booking — clients schedule appointments directly through your own site.</p>
+      <p style="font-size:0.95rem; color:var(--charcoal); line-height:1.8; font-weight:300;">Instead of sending clients to third party platforms, everything happens within your own branded environment.</p>
+    </div>
+  </div>
 </section>
 
 <!-- FEATURES -->
@@ -1269,18 +1514,40 @@
 
 <!-- WHO THIS IS FOR -->
 <section id="who" style="background: var(--deep); color: var(--cream);">
-  <div class="section-label" style="color: var(--blush);">Who this is for</div>
-  <h2 style="color: var(--cream);">Designed for<br><em>beauty professionals</em></h2>
-  <p class="section-sub" style="color: rgba(250,247,242,0.6);">Aura Systems Design works with beauty businesses that want a professional online presence and a smarter way to manage bookings.</p>
-  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; max-width: 640px; margin-bottom: 2.5rem;" class="reveal">
-    <div style="border: 1px solid rgba(232,197,176,0.2); border-radius: 4px; padding: 1rem 1.25rem; font-size:0.88rem; color:rgba(250,247,242,0.8);">Beauty salons</div>
-    <div style="border: 1px solid rgba(232,197,176,0.2); border-radius: 4px; padding: 1rem 1.25rem; font-size:0.88rem; color:rgba(250,247,242,0.8);">Aesthetic clinics</div>
-    <div style="border: 1px solid rgba(232,197,176,0.2); border-radius: 4px; padding: 1rem 1.25rem; font-size:0.88rem; color:rgba(250,247,242,0.8);">Hair stylists</div>
-    <div style="border: 1px solid rgba(232,197,176,0.2); border-radius: 4px; padding: 1rem 1.25rem; font-size:0.88rem; color:rgba(250,247,242,0.8);">Nail technicians</div>
-    <div style="border: 1px solid rgba(232,197,176,0.2); border-radius: 4px; padding: 1rem 1.25rem; font-size:0.88rem; color:rgba(250,247,242,0.8);">Beauty studios</div>
-    <div style="border: 1px solid rgba(232,197,176,0.2); border-radius: 4px; padding: 1rem 1.25rem; font-size:0.88rem; color:rgba(250,247,242,0.8);">Independent professionals</div>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center;">
+    <div>
+      <div class="section-label" style="color: var(--blush);">Who this is for</div>
+      <h2 style="color: var(--cream);">Designed for<br><em>beauty professionals</em></h2>
+      <p style="color: rgba(250,247,242,0.6); font-size:1rem; line-height:1.8; font-weight:300; margin-bottom:1.5rem;">Aura Systems Design works with beauty businesses that want a professional online presence and a smarter way to manage bookings.</p>
+      <p style="color: rgba(250,247,242,0.45); font-size:0.9rem; font-weight:300; line-height:1.7;">Whether you are working independently or running a growing salon, your website should support the way your business operates.</p>
+    </div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.75rem;" class="reveal">
+      <div style="border: 1px solid rgba(232,197,176,0.2); border-radius: 6px; padding: 1.25rem 1.25rem; display:flex; align-items:center; gap:0.75rem;">
+        <span style="font-size:1.3rem;">💇</span>
+        <span style="font-size:0.88rem; color:rgba(250,247,242,0.85);">Beauty salons</span>
+      </div>
+      <div style="border: 1px solid rgba(232,197,176,0.2); border-radius: 6px; padding: 1.25rem 1.25rem; display:flex; align-items:center; gap:0.75rem;">
+        <span style="font-size:1.3rem;">🏥</span>
+        <span style="font-size:0.88rem; color:rgba(250,247,242,0.85);">Aesthetic clinics</span>
+      </div>
+      <div style="border: 1px solid rgba(232,197,176,0.2); border-radius: 6px; padding: 1.25rem 1.25rem; display:flex; align-items:center; gap:0.75rem;">
+        <span style="font-size:1.3rem;">✂️</span>
+        <span style="font-size:0.88rem; color:rgba(250,247,242,0.85);">Hair stylists</span>
+      </div>
+      <div style="border: 1px solid rgba(232,197,176,0.2); border-radius: 6px; padding: 1.25rem 1.25rem; display:flex; align-items:center; gap:0.75rem;">
+        <span style="font-size:1.3rem;">💅</span>
+        <span style="font-size:0.88rem; color:rgba(250,247,242,0.85);">Nail technicians</span>
+      </div>
+      <div style="border: 1px solid rgba(232,197,176,0.2); border-radius: 6px; padding: 1.25rem 1.25rem; display:flex; align-items:center; gap:0.75rem;">
+        <span style="font-size:1.3rem;">🌸</span>
+        <span style="font-size:0.88rem; color:rgba(250,247,242,0.85);">Beauty studios</span>
+      </div>
+      <div style="border: 1px solid rgba(232,197,176,0.2); border-radius: 6px; padding: 1.25rem 1.25rem; display:flex; align-items:center; gap:0.75rem;">
+        <span style="font-size:1.3rem;">👤</span>
+        <span style="font-size:0.88rem; color:rgba(250,247,242,0.85);">Independent pros</span>
+      </div>
+    </div>
   </div>
-  <p style="color: rgba(250,247,242,0.55); font-size: 0.95rem; font-weight:300; line-height:1.7; max-width:520px;">Whether you are working independently or running a growing salon, your website should support the way your business operates.</p>
 </section>
 
 <!-- PACKAGES -->
@@ -1622,6 +1889,7 @@
   // Set monthly as active on load
   document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('label-monthly').classList.add('active');
+    showTab('dash');
   });
 
   // Package selection
@@ -1655,6 +1923,21 @@
     const isOpen = item.classList.contains('open');
     document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
     if (!isOpen) item.classList.add('open');
+  }
+
+  // Hero mockup tab switcher
+  function showTab(name) {
+    ['dash','analytics','capacity','booking'].forEach(t => {
+      const panel = document.getElementById('panel-'+t);
+      const btn = document.getElementById('tab-'+t);
+      if (panel) panel.style.display = (t === name) ? 'block' : 'none';
+      if (btn) {
+        btn.style.background   = (t === name) ? '#FAF7F2' : '#FFFFFF';
+        btn.style.color        = (t === name) ? '#C4856A' : '#8A7A72';
+        btn.style.borderBottom = (t === name) ? '2px solid #C4856A' : '2px solid transparent';
+        btn.style.fontWeight   = (t === name) ? '600' : '400';
+      }
+    });
   }
 
   // Scroll reveal
