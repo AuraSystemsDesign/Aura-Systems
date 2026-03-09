@@ -1072,6 +1072,7 @@
     .demo-package-select { grid-template-columns: 1fr; }
     .form-row { grid-template-columns: 1fr; }
     footer { grid-template-columns: 1fr; padding: 3rem 2rem; }
+    #who > div[style*="grid-template-columns: repeat(3"] { grid-template-columns: 1fr 1fr !important; }
   }
 
   .package-section-label {
@@ -1123,13 +1124,15 @@
 <section class="hero">
   <div class="hero-bg-circle"></div>
   <div class="hero-content">
-    <div class="hero-eyebrow">Built for beauty businesses</div>
-    <h1>Your beauty<br>brand <em>deserves</em><br>to be found.</h1>
-    <p class="hero-sub">From a stunning website to automated bookings, deposits & client management — we build the digital backbone your beauty business needs to grow.</p>
+    <div class="hero-eyebrow">Beauty business systems</div>
+    <h1>Your Own Beauty<br><em>Business System</em></h1>
+    <p class="hero-sub">Custom websites with integrated booking and client management designed specifically for beauty businesses.</p>
+    <p class="hero-sub" style="margin-top:-1rem; font-size:0.95rem;">Aura Systems Design builds elegant websites that do more than just look good. Your website becomes the centre of your business — allowing clients to book appointments, secure deposits and manage services directly online while you keep everything organised from one place.</p>
     <div class="btn-group">
-      <a href="#demo" class="btn-primary">Book a Free Demo</a>
+      <a href="#demo" class="btn-primary">Book a Private Demo</a>
       <a href="#packages" class="btn-outline">See Packages</a>
     </div>
+    <p style="font-size:0.78rem; color:var(--muted); margin-top:1rem; letter-spacing:0.03em;">See how your own branded beauty business system could work.</p>
   </div>
   <div class="hero-right">
     <div class="hero-mockup">
@@ -1209,50 +1212,82 @@
   </div>
 </div>
 
+<!-- THE PROBLEM -->
+<section id="problem" style="background: var(--white);">
+  <div class="section-label">The problem</div>
+  <h2>Most beauty businesses rely on<br><em>platforms they do not control</em></h2>
+  <p class="section-sub">Many salons and beauty professionals rely on booking platforms that charge commission on every appointment and control access to their clients. While these platforms can help bring bookings, they also reduce profits and limit brand control.</p>
+  <p class="section-sub" style="margin-top:-2rem;">A modern beauty business needs more than just a website. It needs a digital system that manages bookings, services and clients in one place.</p>
+</section>
+
+<!-- THE SOLUTION -->
+<section id="solution" style="background: var(--cream);">
+  <div class="section-label">The solution</div>
+  <h2>A digital system built<br><em>around your brand</em></h2>
+  <p class="section-sub">Aura Systems Design creates custom websites that include integrated booking functionality, allowing clients to schedule appointments directly through your own website.</p>
+  <p class="section-sub" style="margin-top:-2rem;">Your platform is designed specifically for beauty businesses, combining elegant design with practical tools that help manage your daily operations. Instead of sending clients to third party platforms, everything happens within your own branded environment.</p>
+</section>
+
 <!-- FEATURES -->
 <section id="features">
-  <div class="section-label">What we build for you</div>
-  <h2>Everything you need,<br><em>nothing you don't</em></h2>
-  <p class="section-sub">We combine beautiful design with practical tools built specifically for the beauty industry.</p>
+  <div class="section-label">What your system can do</div>
+  <h2>Everything in one<br><em>branded platform</em></h2>
+  <p class="section-sub">Built specifically for beauty businesses — combining elegant design with the tools that matter.</p>
   <div class="features-grid reveal">
     <div class="feature-card">
       <div class="feature-icon">🎨</div>
-      <h3>Stunning Website</h3>
-      <p>A bespoke, mobile-first website that showcases your services, portfolio and brand personality — designed to convert visitors into bookings.</p>
+      <h3>Branded Website Design</h3>
+      <p>A professional website designed to match the aesthetic of modern beauty brands.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">📅</div>
-      <h3>Online Booking Calendar</h3>
-      <p>Clients book their appointment online, choose their service, see the cost, and pick their slot — all without a single phone call or DM.</p>
+      <h3>Online Appointment Booking</h3>
+      <p>Allow clients to select services and book appointments directly through your website.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">💳</div>
-      <h3>Deposits & Payments</h3>
-      <p>Collect deposits automatically at the time of booking. Accept full payments online. Reduce no-shows by up to 40%.</p>
+      <h3>Secure Deposit Collection</h3>
+      <p>Reduce cancellations and secure appointments with integrated deposit payments.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">👥</div>
-      <h3>Client CRM</h3>
-      <p>Keep full records of every client — their history, preferences, spend and notes. Build relationships that keep them coming back.</p>
+      <h3>Client Management</h3>
+      <p>Keep track of clients, services and appointment history in one organised system.</p>
     </div>
     <div class="feature-card">
-      <div class="feature-icon">📊</div>
-      <h3>Revenue Dashboard</h3>
-      <p>Know exactly how your business is performing. Track revenue, popular services, busiest days, and growth trends at a glance.</p>
+      <div class="feature-icon">📱</div>
+      <h3>Mobile Friendly Experience</h3>
+      <p>Clients can easily book appointments from their phone or tablet.</p>
     </div>
     <div class="feature-card">
-      <div class="feature-icon">🔔</div>
-      <h3>Automated Reminders</h3>
-      <p>SMS and email reminders sent to clients before their appointment. Reduce cancellations, save your voice, and stay professional.</p>
+      <div class="feature-icon">✨</div>
+      <h3>Professional Brand Presence</h3>
+      <p>Your website becomes the centre of your online presence.</p>
     </div>
   </div>
+</section>
+
+<!-- WHO THIS IS FOR -->
+<section id="who" style="background: var(--deep); color: var(--cream);">
+  <div class="section-label" style="color: var(--blush);">Who this is for</div>
+  <h2 style="color: var(--cream);">Designed for<br><em>beauty professionals</em></h2>
+  <p class="section-sub" style="color: rgba(250,247,242,0.6);">Aura Systems Design works with beauty businesses that want a professional online presence and a smarter way to manage bookings.</p>
+  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; max-width: 640px; margin-bottom: 2.5rem;" class="reveal">
+    <div style="border: 1px solid rgba(232,197,176,0.2); border-radius: 4px; padding: 1rem 1.25rem; font-size:0.88rem; color:rgba(250,247,242,0.8);">Beauty salons</div>
+    <div style="border: 1px solid rgba(232,197,176,0.2); border-radius: 4px; padding: 1rem 1.25rem; font-size:0.88rem; color:rgba(250,247,242,0.8);">Aesthetic clinics</div>
+    <div style="border: 1px solid rgba(232,197,176,0.2); border-radius: 4px; padding: 1rem 1.25rem; font-size:0.88rem; color:rgba(250,247,242,0.8);">Hair stylists</div>
+    <div style="border: 1px solid rgba(232,197,176,0.2); border-radius: 4px; padding: 1rem 1.25rem; font-size:0.88rem; color:rgba(250,247,242,0.8);">Nail technicians</div>
+    <div style="border: 1px solid rgba(232,197,176,0.2); border-radius: 4px; padding: 1rem 1.25rem; font-size:0.88rem; color:rgba(250,247,242,0.8);">Beauty studios</div>
+    <div style="border: 1px solid rgba(232,197,176,0.2); border-radius: 4px; padding: 1rem 1.25rem; font-size:0.88rem; color:rgba(250,247,242,0.8);">Independent professionals</div>
+  </div>
+  <p style="color: rgba(250,247,242,0.55); font-size: 0.95rem; font-weight:300; line-height:1.7; max-width:520px;">Whether you are working independently or running a growing salon, your website should support the way your business operates.</p>
 </section>
 
 <!-- PACKAGES -->
 <section id="packages">
   <div class="section-label">Pricing</div>
-  <h2>Simple packages.<br><em>Real results.</em></h2>
-  <p class="section-sub">Pick the plan that fits your business right now. Every package is fully built and managed for you — no tech knowledge needed. Choose monthly rolling flexibility or commit to 12 months and save.</p>
+  <h2>Choose the system that<br><em>fits your business</em></h2>
+  <p class="section-sub">Aura Systems Design offers flexible packages designed to suit different stages of business growth. Whether you are just starting out or running an established salon, there is a solution designed to support your brand and booking needs. Every package is fully built and managed for you — no tech knowledge needed.</p>
 
   <!-- BILLING TOGGLE -->
   <div class="billing-toggle-wrapper">
@@ -1398,18 +1433,18 @@
 <!-- HOW IT WORKS -->
 <section id="how">
   <div class="section-label">The process</div>
-  <h2>Live in days,<br><em>not months.</em></h2>
-  <p class="section-sub">We've built a streamlined process so your new digital presence is up and running fast.</p>
+  <h2>Simple process,<br><em>fast results.</em></h2>
+  <p class="section-sub">From your first demo to going live, we keep everything clear and straightforward.</p>
   <div class="steps-grid reveal">
     <div class="step">
       <div class="step-num">01</div>
       <h3>Book a Demo</h3>
-      <p>Tell us about your business and which package interests you. We'll walk you through everything live.</p>
+      <p>Schedule a short online demonstration where we show how your own system could work.</p>
     </div>
     <div class="step">
       <div class="step-num">02</div>
-      <h3>We Design & Build</h3>
-      <p>Our team creates your website and configures your booking system, tailored to your brand and services.</p>
+      <h3>Design & Setup</h3>
+      <p>Your website and booking system are designed around your brand and services.</p>
     </div>
     <div class="step">
       <div class="step-num">03</div>
@@ -1418,8 +1453,8 @@
     </div>
     <div class="step">
       <div class="step-num">04</div>
-      <h3>Go Live & Grow</h3>
-      <p>Your site goes live, bookings start flowing. We handle all hosting, updates and support ongoing.</p>
+      <h3>Launch Your Platform</h3>
+      <p>Your beauty business goes live with a professional website and integrated booking experience.</p>
     </div>
   </div>
 </section>
@@ -1469,10 +1504,11 @@
 <!-- DEMO CTA -->
 <section id="demo">
   <div class="section-label">Book a demo</div>
-  <h2>Let's build your<br><em>beauty brand</em> online.</h2>
-  <p class="section-sub">Choose your package and book a free 30-minute demo. No pressure, no commitment — just a clear picture of what's possible.</p>
+  <h2>Ready to build your<br><em>beauty business platform?</em></h2>
+  <p class="section-sub">If you want a website that does more than just display your services, Aura Systems Design can create a complete online system tailored to your business. Let your clients book appointments easily while you manage your business with confidence.</p>
 
   <div class="demo-form-wrapper">
+    <p style="color: var(--blush); font-size:0.85rem; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:1.5rem; font-weight:500;">Book Your Private Demo</p>
     <iframe
       src="https://app.smartsuite.com/form/s87a62l9/pIxwivlpLa"
       frameborder="0"
@@ -1521,7 +1557,7 @@
 <footer>
   <div class="footer-brand">
     <a href="#" class="logo">Aura <span>Systems</span></a>
-    <p>Helping beauty businesses look as good online as they make their clients feel. Websites, bookings and business tools — all in one place.</p>
+    <p>Websites and booking systems designed for beauty businesses.</p>
   </div>
   <div class="footer-col">
     <h4>Services</h4>
