@@ -19,18 +19,9 @@
   }
 
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
   html { scroll-behavior: smooth; overflow-x: hidden; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--deep); overflow-x: hidden; width: 100%; }
 
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--cream);
-    color: var(--deep);
-    overflow-x: hidden;
-    width: 100%;
-  }
-
-  /* NOISE TEXTURE OVERLAY */
   body::before {
     content: '';
     position: fixed;
@@ -41,1034 +32,228 @@
     opacity: 0.4;
   }
 
-  /* NAV */
   nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
     padding: 1.5rem 4rem;
     background: rgba(250, 247, 242, 0.85);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(196, 133, 106, 0.15);
   }
 
-  .logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.6rem;
-    font-weight: 600;
-    color: var(--deep);
-    letter-spacing: 0.05em;
-    text-decoration: none;
-  }
-
+  .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 600; color: var(--deep); letter-spacing: 0.05em; text-decoration: none; }
   .logo span { color: var(--rose); font-style: italic; }
 
-  .nav-links {
-    display: flex;
-    gap: 2.5rem;
-    list-style: none;
-  }
-
-  .nav-links a {
-    font-size: 0.85rem;
-    font-weight: 400;
-    color: var(--charcoal);
-    text-decoration: none;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    transition: color 0.3s;
-  }
-
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a { font-size: 0.85rem; font-weight: 400; color: var(--charcoal); text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.3s; }
   .nav-links a:hover { color: var(--rose); }
-
-  .nav-cta {
-    background: var(--deep);
-    color: var(--cream) !important;
-    padding: 0.6rem 1.5rem;
-    border-radius: 2px;
-  }
-
+  .nav-cta { background: var(--deep); color: var(--cream) !important; padding: 0.6rem 1.5rem; border-radius: 2px; }
   .nav-cta:hover { background: var(--rose); color: var(--white) !important; }
 
-  /* HERO */
-  .hero {
-    min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    padding: 8rem 4rem 4rem;
-    position: relative;
-    overflow: hidden;
-  }
+  .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; align-items: center; padding: 8rem 4rem 4rem; position: relative; overflow: hidden; }
+  .hero-bg-circle { position: absolute; right: -10vw; top: 50%; transform: translateY(-50%); width: 65vw; height: 65vw; border-radius: 50%; background: radial-gradient(circle at 40% 40%, #E8C5B0 0%, #D4A088 40%, #C4856A 100%); opacity: 0.18; z-index: 0; }
+  .hero-content { position: relative; z-index: 1; animation: fadeUp 1s ease both; }
 
-  .hero-bg-circle {
-    position: absolute;
-    right: -10vw;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 65vw;
-    height: 65vw;
-    border-radius: 50%;
-    background: radial-gradient(circle at 40% 40%, #E8C5B0 0%, #D4A088 40%, #C4856A 100%);
-    opacity: 0.18;
-    z-index: 0;
-  }
+  .hero-eyebrow { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rose); font-weight: 500; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
+  .hero-eyebrow::before { content: ''; display: block; width: 2rem; height: 1px; background: var(--rose); }
 
-  .hero-content {
-    position: relative;
-    z-index: 1;
-    animation: fadeUp 1s ease both;
-  }
+  h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 5vw, 5.5rem); font-weight: 300; line-height: 1.08; color: var(--deep); margin-bottom: 1.5rem; }
+  h1 em { font-style: italic; color: var(--rose); }
 
-  .hero-eyebrow {
-    font-size: 0.75rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--rose);
-    font-weight: 500;
-    margin-bottom: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
+  .hero-sub { font-size: 1.05rem; color: var(--muted); line-height: 1.7; max-width: 480px; margin-bottom: 2.5rem; font-weight: 300; }
 
-  .hero-eyebrow::before {
-    content: '';
-    display: block;
-    width: 2rem;
-    height: 1px;
-    background: var(--rose);
-  }
+  .btn-group { display: flex; gap: 1rem; flex-wrap: wrap; }
 
-  h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(3rem, 5vw, 5.5rem);
-    font-weight: 300;
-    line-height: 1.08;
-    color: var(--deep);
-    margin-bottom: 1.5rem;
-  }
-
-  h1 em {
-    font-style: italic;
-    color: var(--rose);
-  }
-
-  .hero-sub {
-    font-size: 1.05rem;
-    color: var(--muted);
-    line-height: 1.7;
-    max-width: 480px;
-    margin-bottom: 2.5rem;
-    font-weight: 300;
-  }
-
-  .btn-group {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-
-  .btn-primary {
-    background: var(--deep);
-    color: var(--cream);
-    padding: 1rem 2rem;
-    border: none;
-    border-radius: 2px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.85rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    cursor: pointer;
-    text-decoration: none;
-    transition: background 0.3s, transform 0.2s;
-    display: inline-block;
-  }
-
+  .btn-primary { background: var(--deep); color: var(--cream); padding: 1rem 2rem; border: none; border-radius: 2px; font-family: 'DM Sans', sans-serif; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; text-decoration: none; transition: background 0.3s, transform 0.2s; display: inline-block; }
   .btn-primary:hover { background: var(--rose); transform: translateY(-2px); }
 
-  .btn-outline {
-    background: transparent;
-    color: var(--deep);
-    padding: 1rem 2rem;
-    border: 1px solid var(--deep);
-    border-radius: 2px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.85rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    cursor: pointer;
-    text-decoration: none;
-    transition: all 0.3s;
-    display: inline-block;
-  }
-
+  .btn-outline { background: transparent; color: var(--deep); padding: 1rem 2rem; border: 1px solid var(--deep); border-radius: 2px; font-family: 'DM Sans', sans-serif; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; text-decoration: none; transition: all 0.3s; display: inline-block; }
   .btn-outline:hover { border-color: var(--rose); color: var(--rose); transform: translateY(-2px); }
 
-  .hero-right {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    justify-content: center;
-    animation: fadeUp 1s 0.3s ease both;
-  }
+  .hero-right { position: relative; z-index: 1; display: flex; justify-content: center; animation: fadeUp 1s 0.3s ease both; }
 
-  .hero-mockup {
-    width: 100%;
-    max-width: 480px;
-    background: var(--white);
-    border-radius: 16px;
-    box-shadow: 0 40px 80px rgba(28, 20, 16, 0.15), 0 4px 16px rgba(28,20,16,0.08);
-    overflow: hidden;
-    border: 1px solid rgba(196, 133, 106, 0.15);
-  }
-
-  .mockup-bar {
-    background: var(--deep);
-    padding: 0.75rem 1.25rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .mockup-dot {
-    width: 10px; height: 10px;
-    border-radius: 50%;
-  }
-
+  .hero-mockup { width: 100%; max-width: 480px; background: var(--white); border-radius: 16px; box-shadow: 0 40px 80px rgba(28, 20, 16, 0.15), 0 4px 16px rgba(28,20,16,0.08); overflow: hidden; border: 1px solid rgba(196, 133, 106, 0.15); }
+  .mockup-bar { background: var(--deep); padding: 0.75rem 1.25rem; display: flex; align-items: center; gap: 0.5rem; }
+  .mockup-dot { width: 10px; height: 10px; border-radius: 50%; }
   .mockup-dot:nth-child(1) { background: #FF5F57; }
   .mockup-dot:nth-child(2) { background: #FFBD2E; }
   .mockup-dot:nth-child(3) { background: #28C840; }
-
-  .mockup-body {
-    padding: 1.5rem;
-  }
-
-  .mockup-header-strip {
-    background: linear-gradient(135deg, var(--blush), var(--rose));
-    border-radius: 8px;
-    padding: 1.5rem;
-    margin-bottom: 1rem;
-    color: white;
-  }
-
-  .mockup-header-strip h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.4rem;
-    font-weight: 400;
-    margin-bottom: 0.3rem;
-  }
-
-  .mockup-header-strip p {
-    font-size: 0.75rem;
-    opacity: 0.85;
-  }
-
-  .mockup-stats {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 0.75rem;
-    margin-bottom: 1rem;
-  }
-
-  .mockup-stat {
-    background: var(--cream);
-    border-radius: 6px;
-    padding: 0.75rem;
-    text-align: center;
-  }
-
-  .mockup-stat .val {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.4rem;
-    color: var(--rose);
-    font-weight: 600;
-    display: block;
-  }
-
-  .mockup-stat .lbl {
-    font-size: 0.65rem;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-
-  .mockup-booking {
-    background: var(--cream);
-    border-radius: 6px;
-    padding: 1rem;
-  }
-
-  .mockup-booking-title {
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--muted);
-    margin-bottom: 0.75rem;
-  }
-
-  .booking-slot {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 0.5rem 0;
-    border-bottom: 1px solid rgba(196,133,106,0.15);
-  }
-
-  .booking-slot:last-child { border-bottom: none; }
-
-  .slot-dot {
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: var(--rose);
-    flex-shrink: 0;
-  }
-
-  .slot-dot.green { background: #4CAF50; }
-  .slot-dot.gold { background: var(--gold); }
-
-  .slot-info { flex: 1; }
-  .slot-name { font-size: 0.78rem; font-weight: 500; color: var(--deep); }
-  .slot-time { font-size: 0.68rem; color: var(--muted); }
-  .slot-price { font-size: 0.78rem; font-weight: 500; color: var(--rose); }
+  .mockup-body { padding: 1.5rem; }
 
   /* STATS BAND */
-  .stats-band {
-    background: var(--deep);
-    padding: 3rem 4rem;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-    text-align: center;
-    width: 100%;
-    max-width: 100%;
-    overflow: hidden;
-  }
+  .stats-band { background: var(--deep); padding: 3rem 4rem; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; text-align: center; width: 100%; max-width: 100%; overflow: hidden; }
+  .stat-item .number { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 300; color: var(--blush); display: block; line-height: 1; }
+  .stat-item .label { font-size: 0.75rem; color: rgba(250,247,242,0.55); text-transform: uppercase; letter-spacing: 0.12em; margin-top: 0.5rem; display: block; }
 
-  .stat-item .number {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 3rem;
-    font-weight: 300;
-    color: var(--blush);
-    display: block;
-    line-height: 1;
-  }
+  section { padding: 6rem 4rem; width: 100%; max-width: 100%; }
 
-  .stat-item .label {
-    font-size: 0.75rem;
-    color: rgba(250,247,242,0.55);
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    margin-top: 0.5rem;
-    display: block;
-  }
+  .section-label { font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--rose); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem; }
+  .section-label::before { content: ''; display: block; width: 2rem; height: 1px; background: var(--rose); }
 
-  /* SECTION SHARED */
-  section {
-    padding: 6rem 4rem;
-    width: 100%;
-    max-width: 100%;
-  }
-
-  .stats-band {
-    width: 100%;
-    max-width: 100%;
-  }
-
-  .section-label {
-    font-size: 0.72rem;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--rose);
-    margin-bottom: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-
-  .section-label::before {
-    content: '';
-    display: block;
-    width: 2rem;
-    height: 1px;
-    background: var(--rose);
-  }
-
-  h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2.2rem, 4vw, 3.5rem);
-    font-weight: 300;
-    line-height: 1.1;
-    color: var(--deep);
-    margin-bottom: 1.25rem;
-  }
-
+  h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 300; line-height: 1.1; color: var(--deep); margin-bottom: 1.25rem; }
   h2 em { font-style: italic; color: var(--rose); }
 
-  .section-sub {
-    color: var(--muted);
-    font-size: 1rem;
-    line-height: 1.7;
-    max-width: 540px;
-    font-weight: 300;
-    margin-bottom: 3.5rem;
-  }
+  .section-sub { color: var(--muted); font-size: 1rem; line-height: 1.7; max-width: 540px; font-weight: 300; margin-bottom: 3.5rem; }
 
   /* FEATURES */
   #features { background: var(--white); }
-
-  .features-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-  }
-
-  .feature-card {
-    padding: 2rem;
-    border: 1px solid rgba(196,133,106,0.18);
-    border-radius: 4px;
-    transition: box-shadow 0.3s, transform 0.3s;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .feature-card::before {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0;
-    height: 3px;
-    width: 0;
-    background: linear-gradient(90deg, var(--rose), var(--gold));
-    transition: width 0.4s ease;
-  }
-
+  .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .feature-card { padding: 2rem; border: 1px solid rgba(196,133,106,0.18); border-radius: 4px; transition: box-shadow 0.3s, transform 0.3s; position: relative; overflow: hidden; }
+  .feature-card::before { content: ''; position: absolute; bottom: 0; left: 0; height: 3px; width: 0; background: linear-gradient(90deg, var(--rose), var(--gold)); transition: width 0.4s ease; }
   .feature-card:hover { box-shadow: 0 12px 40px rgba(28,20,16,0.08); transform: translateY(-4px); }
   .feature-card:hover::before { width: 100%; }
-
-  .feature-icon {
-    width: 48px; height: 48px;
-    background: var(--cream);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1.25rem;
-    font-size: 1.3rem;
-  }
-
-  .feature-card h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.35rem;
-    font-weight: 400;
-    margin-bottom: 0.65rem;
-    color: var(--deep);
-  }
-
-  .feature-card p {
-    font-size: 0.88rem;
-    color: var(--muted);
-    line-height: 1.65;
-    font-weight: 300;
-  }
+  .feature-icon { width: 48px; height: 48px; background: var(--cream); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem; font-size: 1.3rem; }
+  .feature-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-weight: 400; margin-bottom: 0.65rem; color: var(--deep); }
+  .feature-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.65; font-weight: 300; }
 
   /* PACKAGES */
   #packages { background: var(--cream); }
+  .packages-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; align-items: start; }
 
-  .packages-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    align-items: start;
-  }
-
-  .package-card {
-    background: var(--white);
-    border: 1px solid rgba(196,133,106,0.18);
-    border-radius: 4px;
-    padding: 2.5rem;
-    transition: transform 0.3s, box-shadow 0.3s;
-    position: relative;
-  }
-
-  .package-card.featured {
-    background: var(--deep);
-    border-color: var(--deep);
-    transform: scale(1.04);
-    box-shadow: 0 30px 60px rgba(28,20,16,0.2);
-  }
-
+  .package-card { background: var(--white); border: 1px solid rgba(196,133,106,0.18); border-radius: 4px; padding: 2.5rem; transition: transform 0.3s, box-shadow 0.3s; position: relative; }
+  .package-card.featured { background: var(--deep); border-color: var(--deep); transform: scale(1.04); box-shadow: 0 30px 60px rgba(28,20,16,0.2); }
   .package-card:hover { transform: translateY(-6px) scale(1.02); box-shadow: 0 20px 50px rgba(28,20,16,0.1); }
   .package-card.featured:hover { transform: scale(1.05) translateY(-4px); }
 
-  .package-badge {
-    position: absolute;
-    top: -12px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--rose);
-    color: white;
-    font-size: 0.65rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    padding: 0.35rem 1rem;
-    border-radius: 20px;
-    white-space: nowrap;
-  }
+  .package-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--rose); color: white; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.35rem 1rem; border-radius: 20px; white-space: nowrap; }
 
-  .package-name {
-    font-size: 0.72rem;
-    text-transform: uppercase;
-    letter-spacing: 0.18em;
-    color: var(--rose);
-    margin-bottom: 0.5rem;
-  }
-
+  .package-name { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.18em; color: var(--rose); margin-bottom: 0.5rem; }
   .package-card.featured .package-name { color: var(--blush); }
 
-  .package-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2rem;
-    font-weight: 300;
-    color: var(--deep);
-    margin-bottom: 1.5rem;
-  }
-
+  .package-title { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 300; color: var(--deep); margin-bottom: 1.5rem; }
   .package-card.featured .package-title { color: var(--cream); }
 
-  .package-price {
-    margin-bottom: 2rem;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid rgba(196,133,106,0.15);
-  }
-
+  .package-price { margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(196,133,106,0.15); }
   .package-card.featured .package-price { border-color: rgba(250,247,242,0.15); }
 
-  .price-setup {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.5rem;
-    font-weight: 600;
-    color: var(--deep);
-    display: block;
-    line-height: 1;
-  }
-
+  .price-setup { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; font-weight: 600; color: var(--deep); display: block; line-height: 1; }
   .package-card.featured .price-setup { color: var(--blush); }
 
-  .price-monthly {
-    font-size: 0.8rem;
-    color: var(--muted);
-    margin-top: 0.3rem;
-    display: block;
-  }
-
+  .price-monthly { font-size: 0.8rem; color: var(--muted); margin-top: 0.3rem; display: block; }
   .package-card.featured .price-monthly { color: rgba(250,247,242,0.55); }
 
-  .package-features {
-    list-style: none;
-    margin-bottom: 2rem;
-  }
+  .stripe-notice { font-size: 0.72rem; color: var(--muted); margin-top: 0.4rem; display: block; font-style: italic; }
+  .package-card.featured .stripe-notice { color: rgba(250,247,242,0.4); }
 
-  .package-features li {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.75rem;
-    font-size: 0.85rem;
-    color: var(--charcoal);
-    line-height: 1.5;
-    padding: 0.5rem 0;
-    border-bottom: 1px solid rgba(196,133,106,0.08);
-  }
-
+  .package-features { list-style: none; margin-bottom: 2rem; }
+  .package-features li { display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.85rem; color: var(--charcoal); line-height: 1.5; padding: 0.5rem 0; border-bottom: 1px solid rgba(196,133,106,0.08); }
   .package-card.featured .package-features li { color: rgba(250,247,242,0.8); border-color: rgba(250,247,242,0.08); }
-
-  .package-features li::before {
-    content: '✓';
-    color: var(--rose);
-    font-weight: 600;
-    flex-shrink: 0;
-  }
-
+  .package-features li::before { content: '✓'; color: var(--rose); font-weight: 600; flex-shrink: 0; }
   .package-card.featured .package-features li::before { color: var(--blush); }
 
-  .btn-package {
-    width: 100%;
-    text-align: center;
-    padding: 0.9rem;
-    background: var(--cream);
-    color: var(--deep);
-    border: 1px solid rgba(196,133,106,0.3);
-    border-radius: 2px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.8rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    cursor: pointer;
-    text-decoration: none;
-    display: block;
-    transition: all 0.3s;
-  }
-
-  .package-card.featured .btn-package {
-    background: var(--rose);
-    color: white;
-    border-color: var(--rose);
-  }
-
+  .btn-package { width: 100%; text-align: center; padding: 0.9rem; background: var(--cream); color: var(--deep); border: 1px solid rgba(196,133,106,0.3); border-radius: 2px; font-family: 'DM Sans', sans-serif; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; text-decoration: none; display: block; transition: all 0.3s; }
+  .package-card.featured .btn-package { background: var(--rose); color: white; border-color: var(--rose); }
   .btn-package:hover { background: var(--rose); color: white; border-color: var(--rose); }
   .package-card.featured .btn-package:hover { background: var(--blush); border-color: var(--blush); color: var(--deep); }
 
   /* HOW IT WORKS */
   #how { background: var(--white); }
-
-  .steps-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-    position: relative;
-  }
-
-  .steps-grid::before {
-    content: '';
-    position: absolute;
-    top: 2.5rem;
-    left: 12%;
-    right: 12%;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--blush), var(--rose), var(--blush), transparent);
-    z-index: 0;
-  }
-
-  .step {
-    text-align: center;
-    position: relative;
-    z-index: 1;
-  }
-
-  .step-num {
-    width: 5rem; height: 5rem;
-    background: var(--cream);
-    border: 2px solid var(--blush);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 1.25rem;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.6rem;
-    color: var(--rose);
-    font-weight: 300;
-    transition: background 0.3s, border-color 0.3s;
-  }
-
+  .steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; position: relative; }
+  .steps-grid::before { content: ''; position: absolute; top: 2.5rem; left: 12%; right: 12%; height: 1px; background: linear-gradient(90deg, transparent, var(--blush), var(--rose), var(--blush), transparent); z-index: 0; }
+  .step { text-align: center; position: relative; z-index: 1; }
+  .step-num { width: 5rem; height: 5rem; background: var(--cream); border: 2px solid var(--blush); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem; font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; color: var(--rose); font-weight: 300; transition: background 0.3s, border-color 0.3s; }
   .step:hover .step-num { background: var(--rose); border-color: var(--rose); color: white; }
-
-  .step h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.25rem;
-    font-weight: 400;
-    margin-bottom: 0.5rem;
-    color: var(--deep);
-  }
-
-  .step p {
-    font-size: 0.83rem;
-    color: var(--muted);
-    line-height: 1.6;
-    font-weight: 300;
-  }
+  .step h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 400; margin-bottom: 0.5rem; color: var(--deep); }
+  .step p { font-size: 0.83rem; color: var(--muted); line-height: 1.6; font-weight: 300; }
 
   /* TESTIMONIALS */
   #testimonials { background: var(--cream); }
-
-  .testimonials-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-  }
-
-  .testimonial {
-    background: var(--white);
-    padding: 2rem;
-    border-radius: 4px;
-    border: 1px solid rgba(196,133,106,0.12);
-  }
-
-  .testimonial-quote {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.1rem;
-    font-weight: 300;
-    font-style: italic;
-    color: var(--charcoal);
-    line-height: 1.7;
-    margin-bottom: 1.5rem;
-  }
-
-  .testimonial-stars {
-    color: var(--gold);
-    font-size: 0.85rem;
-    margin-bottom: 1rem;
-    letter-spacing: 0.1em;
-  }
-
-  .testimonial-author {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-
-  .author-avatar {
-    width: 40px; height: 40px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--blush), var(--rose));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Cormorant Garamond', serif;
-    color: white;
-    font-size: 1rem;
-    font-weight: 600;
-  }
-
+  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .testimonial { background: var(--white); padding: 2rem; border-radius: 4px; border: 1px solid rgba(196,133,106,0.12); }
+  .testimonial-quote { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 300; font-style: italic; color: var(--charcoal); line-height: 1.7; margin-bottom: 1.5rem; }
+  .testimonial-stars { color: var(--gold); font-size: 0.85rem; margin-bottom: 1rem; letter-spacing: 0.1em; }
+  .testimonial-author { display: flex; align-items: center; gap: 0.75rem; }
+  .author-avatar { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--blush), var(--rose)); display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; color: white; font-size: 1rem; font-weight: 600; }
   .author-name { font-size: 0.85rem; font-weight: 500; color: var(--deep); }
   .author-biz { font-size: 0.75rem; color: var(--muted); }
 
-  /* DEMO / CTA */
-  #demo {
-    background: var(--deep);
-    padding: 6rem 4rem;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-
-  #demo::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80vw;
-    height: 80vw;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(196,133,106,0.1) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
+  /* DEMO CTA */
+  #demo { background: var(--deep); padding: 6rem 4rem; text-align: center; position: relative; overflow: hidden; }
+  #demo::before { content: ''; position: absolute; top: -50%; left: 50%; transform: translateX(-50%); width: 80vw; height: 80vw; border-radius: 50%; background: radial-gradient(circle, rgba(196,133,106,0.1) 0%, transparent 70%); pointer-events: none; }
   #demo h2 { color: var(--cream); position: relative; }
   #demo h2 em { color: var(--blush); }
   #demo .section-sub { color: rgba(250,247,242,0.55); margin: 0 auto 3rem; }
   #demo .section-label { justify-content: center; }
   #demo .section-label::before { display: none; }
-
-  .demo-form-wrapper {
-    max-width: 600px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 1;
-  }
-
-  .demo-package-select {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.75rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .pkg-option {
-    border: 1px solid rgba(250,247,242,0.2);
-    border-radius: 4px;
-    padding: 1rem;
-    cursor: pointer;
-    transition: all 0.3s;
-    text-align: center;
-  }
-
-  .pkg-option:hover, .pkg-option.selected {
-    border-color: var(--rose);
-    background: rgba(196,133,106,0.15);
-  }
-
-  .pkg-option-name {
-    font-size: 0.65rem;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    color: rgba(250,247,242,0.5);
-    display: block;
-    margin-bottom: 0.3rem;
-  }
-
-  .pkg-option-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.1rem;
-    color: var(--cream);
-  }
-
-  .form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.75rem;
-    margin-bottom: 0.75rem;
-  }
-
-  .form-input {
-    background: rgba(250,247,242,0.07);
-    border: 1px solid rgba(250,247,242,0.15);
-    border-radius: 2px;
-    padding: 0.9rem 1.1rem;
-    color: var(--cream);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.88rem;
-    width: 100%;
-    outline: none;
-    transition: border-color 0.3s;
-  }
-
-  .form-input::placeholder { color: rgba(250,247,242,0.35); }
-  .form-input:focus { border-color: var(--rose); }
-
-  .form-submit {
-    width: 100%;
-    background: var(--rose);
-    color: white;
-    border: none;
-    padding: 1.1rem;
-    border-radius: 2px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.85rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: background 0.3s, transform 0.2s;
-    margin-top: 0.5rem;
-  }
-
-  .form-submit:hover { background: var(--blush); color: var(--deep); transform: translateY(-2px); }
-
-  .success-msg {
-    display: none;
-    background: rgba(76,175,80,0.15);
-    border: 1px solid rgba(76,175,80,0.4);
-    color: #a5d6a7;
-    padding: 1.25rem;
-    border-radius: 4px;
-    font-size: 0.9rem;
-    line-height: 1.6;
-    text-align: center;
-    margin-top: 1rem;
-  }
+  .demo-form-wrapper { max-width: 600px; margin: 0 auto; position: relative; z-index: 1; }
 
   /* FAQ */
   #faq { background: var(--white); }
-
-  .faq-list {
-    max-width: 720px;
-  }
-
-  .faq-item {
-    border-bottom: 1px solid rgba(196,133,106,0.15);
-    padding: 1.5rem 0;
-  }
-
-  .faq-q {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-    font-weight: 500;
-    font-size: 0.95rem;
-    color: var(--deep);
-  }
-
+  .faq-list { max-width: 720px; }
+  .faq-item { border-bottom: 1px solid rgba(196,133,106,0.15); padding: 1.5rem 0; }
+  .faq-q { display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-weight: 500; font-size: 0.95rem; color: var(--deep); }
   .faq-q span { transition: transform 0.3s; }
-
   .faq-item.open .faq-q span { transform: rotate(45deg); color: var(--rose); }
-
-  .faq-a {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease;
-    font-size: 0.88rem;
-    color: var(--muted);
-    line-height: 1.75;
-    font-weight: 300;
-  }
-
+  .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; font-size: 0.88rem; color: var(--muted); line-height: 1.75; font-weight: 300; }
   .faq-item.open .faq-a { max-height: 200px; padding-top: 0.75rem; }
 
   /* FOOTER */
-  footer {
-    background: var(--deep);
-    padding: 4rem;
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: 3rem;
-    border-top: 1px solid rgba(196,133,106,0.1);
-    width: 100%;
-    max-width: 100%;
-    overflow: hidden;
-  }
-
+  footer { background: var(--deep); padding: 4rem; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; border-top: 1px solid rgba(196,133,106,0.1); width: 100%; max-width: 100%; overflow: hidden; }
   .footer-brand .logo { font-size: 1.4rem; color: var(--cream); }
-  .footer-brand p {
-    font-size: 0.82rem;
-    color: rgba(250,247,242,0.45);
-    line-height: 1.7;
-    margin-top: 1rem;
-    font-weight: 300;
-  }
-
-  .footer-col h4 {
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    color: var(--blush);
-    margin-bottom: 1.25rem;
-  }
-
+  .footer-brand p { font-size: 0.82rem; color: rgba(250,247,242,0.45); line-height: 1.7; margin-top: 1rem; font-weight: 300; }
+  .footer-col h4 { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--blush); margin-bottom: 1.25rem; }
   .footer-col ul { list-style: none; }
-
-  .footer-col ul li {
-    margin-bottom: 0.6rem;
-  }
-
-  .footer-col ul li a {
-    font-size: 0.83rem;
-    color: rgba(250,247,242,0.45);
-    text-decoration: none;
-    transition: color 0.3s;
-  }
-
+  .footer-col ul li { margin-bottom: 0.6rem; }
+  .footer-col ul li a { font-size: 0.83rem; color: rgba(250,247,242,0.45); text-decoration: none; transition: color 0.3s; }
   .footer-col ul li a:hover { color: var(--blush); }
+  .footer-bottom { background: var(--deep); padding: 1.5rem 4rem; text-align: center; font-size: 0.75rem; color: rgba(250,247,242,0.3); border-top: 1px solid rgba(196,133,106,0.08); letter-spacing: 0.05em; }
 
-  .footer-bottom {
-    background: var(--deep);
-    padding: 1.5rem 4rem;
-    text-align: center;
-    font-size: 0.75rem;
-    color: rgba(250,247,242,0.3);
-    border-top: 1px solid rgba(196,133,106,0.08);
-    letter-spacing: 0.05em;
-  }
-
-  /* ANIMATIONS */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .reveal {
-    opacity: 0;
-    transform: translateY(25px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
-
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+  .reveal { opacity: 0; transform: translateY(25px); transition: opacity 0.7s ease, transform 0.7s ease; }
   .reveal.visible { opacity: 1; transform: none; }
 
   /* BILLING TOGGLE */
-  .billing-toggle-wrapper {
+  .billing-toggle-wrapper { display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 3rem; }
+  .toggle-label { font-size: 0.88rem; color: var(--muted); font-weight: 400; display: flex; align-items: center; gap: 0.5rem; }
+  .toggle-label.active { color: var(--deep); font-weight: 500; }
+  .save-badge { background: var(--rose); color: white; font-size: 0.65rem; padding: 0.2rem 0.5rem; border-radius: 20px; letter-spacing: 0.05em; font-weight: 500; }
+  .billing-toggle { width: 52px; height: 28px; background: var(--blush); border-radius: 20px; cursor: pointer; position: relative; transition: background 0.3s; }
+  .billing-toggle.annual { background: var(--rose); }
+  .toggle-knob { width: 22px; height: 22px; background: white; border-radius: 50%; position: absolute; top: 3px; left: 3px; transition: transform 0.3s; box-shadow: 0 2px 6px rgba(0,0,0,0.15); }
+  .billing-toggle.annual .toggle-knob { transform: translateX(24px); }
+  .price-setup small { font-size: 0.7rem; font-weight: 300; color: var(--muted); font-family: 'DM Sans', sans-serif; }
+  .package-card.featured .price-setup small { color: rgba(250,247,242,0.5); }
+  .price-commitment { display: block; font-size: 0.72rem; color: var(--rose); margin-top: 0.3rem; font-weight: 500; min-height: 1rem; }
+  .package-card.featured .price-commitment { color: var(--blush); }
+
+  .policy-note { display: flex; align-items: flex-start; gap: 1rem; background: rgba(196,133,106,0.08); border: 1px solid rgba(196,133,106,0.2); border-radius: 4px; padding: 1.25rem 1.5rem; margin-top: 2.5rem; max-width: 860px; margin-left: auto; margin-right: auto; }
+  .policy-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 0.1rem; }
+  .policy-text { font-size: 0.82rem; color: var(--muted); line-height: 1.7; }
+  .policy-text strong { color: var(--charcoal); }
+
+  .package-section-label { font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin: 1.25rem 0 0.6rem; font-weight: 500; }
+  .package-card.featured .package-section-label { color: rgba(249,245,238,0.5); }
+
+  .packages-footer { margin-top: 3rem; background: rgba(44,31,20,0.04); border: 1px solid rgba(196,133,106,0.2); padding: 2rem 2.5rem; }
+  .pf-title { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.25rem; text-align: center; }
+  .pf-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem 2rem; }
+  .pf-item { font-size: 0.82rem; color: var(--charcoal); display: flex; align-items: center; gap: 0.5rem; }
+  .pf-icon { color: var(--rose); font-size: 0.9rem; }
+
+  /* VS FRESHA banner */
+  .vs-banner {
+    background: linear-gradient(135deg, #1C1410 0%, #3A2E28 100%);
+    padding: 2rem 4rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1rem;
-    margin-bottom: 3rem;
+    gap: 3rem;
+    flex-wrap: wrap;
+    border-top: 1px solid rgba(196,133,106,0.15);
+    border-bottom: 1px solid rgba(196,133,106,0.15);
   }
+  .vs-item { text-align: center; }
+  .vs-platform { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(250,247,242,0.4); margin-bottom: 0.4rem; }
+  .vs-cost { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 600; }
+  .vs-cost.bad { color: #EF4444; }
+  .vs-cost.good { color: #4CAF50; }
+  .vs-desc { font-size: 0.72rem; color: rgba(250,247,242,0.5); margin-top: 0.2rem; }
+  .vs-divider { font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: rgba(196,133,106,0.3); }
+  .vs-saving { background: rgba(76,175,80,0.12); border: 1px solid rgba(76,175,80,0.3); border-radius: 4px; padding: 1rem 2rem; text-align: center; }
+  .vs-saving-label { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(250,247,242,0.5); margin-bottom: 0.3rem; }
+  .vs-saving-val { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: #4CAF50; font-weight: 600; }
+  .vs-saving-sub { font-size: 0.7rem; color: rgba(250,247,242,0.4); margin-top: 0.2rem; }
 
-  .toggle-label {
-    font-size: 0.88rem;
-    color: var(--muted);
-    font-weight: 400;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .toggle-label.active { color: var(--deep); font-weight: 500; }
-
-  .save-badge {
-    background: var(--rose);
-    color: white;
-    font-size: 0.65rem;
-    padding: 0.2rem 0.5rem;
-    border-radius: 20px;
-    letter-spacing: 0.05em;
-    font-weight: 500;
-  }
-
-  .billing-toggle {
-    width: 52px;
-    height: 28px;
-    background: var(--blush);
-    border-radius: 20px;
-    cursor: pointer;
-    position: relative;
-    transition: background 0.3s;
-  }
-
-  .billing-toggle.annual { background: var(--rose); }
-
-  .toggle-knob {
-    width: 22px;
-    height: 22px;
-    background: white;
-    border-radius: 50%;
-    position: absolute;
-    top: 3px;
-    left: 3px;
-    transition: transform 0.3s;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-  }
-
-  .billing-toggle.annual .toggle-knob { transform: translateX(24px); }
-
-  .price-setup small {
-    font-size: 0.7rem;
-    font-weight: 300;
-    color: var(--muted);
-    font-family: 'DM Sans', sans-serif;
-  }
-
-  .package-card.featured .price-setup small { color: rgba(250,247,242,0.5); }
-
-  .price-commitment {
-    display: block;
-    font-size: 0.72rem;
-    color: var(--rose);
-    margin-top: 0.3rem;
-    font-weight: 500;
-    min-height: 1rem;
-  }
-
-  .package-card.featured .price-commitment { color: var(--blush); }
-
-  /* POLICY NOTE */
-  .policy-note {
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-    background: rgba(196,133,106,0.08);
-    border: 1px solid rgba(196,133,106,0.2);
-    border-radius: 4px;
-    padding: 1.25rem 1.5rem;
-    margin-top: 2.5rem;
-    max-width: 860px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .policy-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 0.1rem; }
-
-  .policy-text {
-    font-size: 0.82rem;
-    color: var(--muted);
-    line-height: 1.7;
-  }
-
-  .policy-text strong { color: var(--charcoal); }
-
-  /* RESPONSIVE */
   @media (max-width: 900px) {
     nav { padding: 1.25rem 2rem; }
     .nav-links { display: none; }
@@ -1083,49 +268,14 @@
     .steps-grid { grid-template-columns: 1fr 1fr; }
     .steps-grid::before { display: none; }
     .package-card.featured { transform: none; }
-    .demo-package-select { grid-template-columns: 1fr; }
-    .form-row { grid-template-columns: 1fr; }
     footer { grid-template-columns: 1fr; padding: 3rem 2rem; }
-    #who > div[style*="grid-template-columns:1fr 1fr"],
-    #problem > div[style*="grid-template-columns:1fr 1fr"],
-    #solution > div[style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; }
-    #showcase > div[style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; }
-  }
-
-  .package-section-label {
-    font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase;
-    color: var(--gold); margin: 1.25rem 0 0.6rem; font-weight: 500;
-  }
-  .package-card.featured .package-section-label { color: rgba(249,245,238,0.5); }
-
-  .packages-footer {
-    margin-top: 3rem;
-    background: rgba(44,31,20,0.04);
-    border: 1px solid var(--sand);
-    padding: 2rem 2.5rem;
-  }
-  .pf-title {
-    font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--mocha); margin-bottom: 1.25rem; text-align: center;
-  }
-  .pf-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem 2rem;
-  }
-  .pf-item {
-    font-size: 0.82rem; color: var(--mocha); display: flex;
-    align-items: center; gap: 0.5rem;
-  }
-  .pf-icon { color: var(--gold); font-size: 0.5rem; }
-
-  @media (max-width: 768px) {
+    .vs-banner { padding: 2rem; gap: 1.5rem; }
     .pf-grid { grid-template-columns: 1fr 1fr; }
   }
-
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <a href="#" class="logo">Aura <span>Systems</span></a>
   <ul class="nav-links">
@@ -1155,9 +305,7 @@
     <div class="hero-mockup" style="max-width:480px; border-radius:12px;">
       <div class="mockup-bar" style="justify-content:space-between; padding:0.6rem 1rem;">
         <div style="display:flex;gap:0.4rem;">
-          <div class="mockup-dot"></div>
-          <div class="mockup-dot"></div>
-          <div class="mockup-dot"></div>
+          <div class="mockup-dot"></div><div class="mockup-dot"></div><div class="mockup-dot"></div>
         </div>
         <span style="font-size:0.65rem;color:rgba(250,247,242,0.45);letter-spacing:0.1em;">AURA DASHBOARD</span>
         <div style="width:36px;"></div>
@@ -1172,53 +320,53 @@
           </div>
         </div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;">
-          <div style="background:#4CAF50;border-radius:8px;padding:0.85rem;color:white;">
-            <div style="font-size:1rem;margin-bottom:0.25rem;">💰</div>
-            <div style="font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;opacity:0.85;margin-bottom:0.3rem;">Revenue This Month</div>
-            <div style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;line-height:1;">£2,340</div>
-            <div style="font-size:0.58rem;opacity:0.8;margin-top:0.2rem;">↑ Updated from bookings</div>
-          </div>
-          <div style="background:#F5A623;border-radius:8px;padding:0.85rem;color:white;">
-            <div style="font-size:1rem;margin-bottom:0.25rem;">📅</div>
-            <div style="font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;opacity:0.85;margin-bottom:0.3rem;">Bookings This Month</div>
-            <div style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;line-height:1;">24</div>
-            <div style="font-size:0.58rem;opacity:0.8;margin-top:0.2rem;">24 this month</div>
-          </div>
-          <div style="background:#E53935;border-radius:8px;padding:0.85rem;color:white;">
-            <div style="font-size:1rem;margin-bottom:0.25rem;">🚫</div>
-            <div style="font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;opacity:0.85;margin-bottom:0.3rem;">No-Shows</div>
-            <div style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;line-height:1;">0</div>
-            <div style="font-size:0.58rem;opacity:0.8;margin-top:0.2rem;">0 this month</div>
-          </div>
-          <div style="background:#3B82F6;border-radius:8px;padding:0.85rem;color:white;">
-            <div style="font-size:1rem;margin-bottom:0.25rem;">⭐</div>
-            <div style="font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;opacity:0.85;margin-bottom:0.3rem;">Avg. Booking Value</div>
-            <div style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;line-height:1;">£64</div>
-            <div style="font-size:0.58rem;opacity:0.8;margin-top:0.2rem;">Per appointment</div>
-          </div>
+          <div style="background:#4CAF50;border-radius:8px;padding:0.85rem;color:white;"><div style="font-size:1rem;margin-bottom:0.25rem;">💰</div><div style="font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;opacity:0.85;margin-bottom:0.3rem;">Revenue This Month</div><div style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;line-height:1;">£2,340</div></div>
+          <div style="background:#F5A623;border-radius:8px;padding:0.85rem;color:white;"><div style="font-size:1rem;margin-bottom:0.25rem;">📅</div><div style="font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;opacity:0.85;margin-bottom:0.3rem;">Bookings This Month</div><div style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;line-height:1;">24</div></div>
+          <div style="background:#E53935;border-radius:8px;padding:0.85rem;color:white;"><div style="font-size:1rem;margin-bottom:0.25rem;">🚫</div><div style="font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;opacity:0.85;margin-bottom:0.3rem;">No-Shows</div><div style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;line-height:1;">0</div></div>
+          <div style="background:#3B82F6;border-radius:8px;padding:0.85rem;color:white;"><div style="font-size:1rem;margin-bottom:0.25rem;">⭐</div><div style="font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;opacity:0.85;margin-bottom:0.3rem;">Avg. Booking Value</div><div style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;line-height:1;">£64</div></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- STATS BAND -->
+<!-- STATS BAND — honest, compelling -->
 <div class="stats-band">
   <div class="stat-item">
-    <span class="number">200+</span>
-    <span class="label">Beauty businesses trust us</span>
+    <span class="number">£0</span>
+    <span class="label">Commission per booking — ever</span>
   </div>
   <div class="stat-item">
-    <span class="number">£2M+</span>
-    <span class="label">Processed through our platform</span>
+    <span class="number">3 days</span>
+    <span class="label">Average time to go live</span>
   </div>
   <div class="stat-item">
     <span class="number">40%</span>
     <span class="label">Fewer no-shows with deposits</span>
   </div>
   <div class="stat-item">
-    <span class="number">3 days</span>
-    <span class="label">Average time to go live</span>
+    <span class="number">100%</span>
+    <span class="label">Your data — always yours</span>
+  </div>
+</div>
+
+<!-- VS MARKETPLACE COMPARISON -->
+<div class="vs-banner">
+  <div class="vs-item">
+    <div class="vs-platform">Booking Marketplaces</div>
+    <div class="vs-cost bad">20–30%</div>
+    <div class="vs-desc">commission on every new client<br>they send you — month after month</div>
+  </div>
+  <div class="vs-divider">vs</div>
+  <div class="vs-item">
+    <div class="vs-platform">Aura Systems Design</div>
+    <div class="vs-cost good">£119</div>
+    <div class="vs-desc">per month — flat fee, no commission,<br>no matter how much you earn</div>
+  </div>
+  <div class="vs-saving">
+    <div class="vs-saving-label">Potential monthly saving</div>
+    <div class="vs-saving-val">£481–£1,381</div>
+    <div class="vs-saving-sub">on a salon doing £3,000–£5,000/month</div>
   </div>
 </div>
 
@@ -1229,7 +377,6 @@
   <p class="section-sub">A real look at what your branded business platform includes — from client bookings to staff management.</p>
 
   <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem;" class="reveal">
-
     <!-- WINDOW 1: Dashboard -->
     <div style="background:#fff; border-radius:12px; box-shadow:0 8px 40px rgba(28,20,16,0.1); overflow:hidden; border:1px solid rgba(196,133,106,0.15);">
       <div style="background:#1C1410; padding:0.6rem 1rem; display:flex; align-items:center; gap:0.4rem;">
@@ -1241,35 +388,11 @@
       <div style="padding:1.25rem;">
         <div style="font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:#1C1410;margin-bottom:0.2rem;">Good morning, <em style="color:#C4856A;">Isabelle.</em></div>
         <div style="font-size:0.68rem;color:#8A7A72;margin-bottom:0.75rem;">Here's how your business is performing this month.</div>
-        <div style="display:inline-flex;align-items:center;gap:0.4rem;background:#FAF7F2;border:1px solid rgba(196,133,106,0.2);border-radius:20px;padding:0.2rem 0.65rem;margin-bottom:1rem;">
-          <span style="width:6px;height:6px;border-radius:50%;background:#4CAF50;display:inline-block;"></span>
-          <span style="font-size:0.6rem;color:#8A7A72;">Live data · syncing now</span>
-        </div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;">
-          <div style="background:#4CAF50;border-radius:8px;padding:0.75rem;color:white;">
-            <div style="font-size:0.85rem;margin-bottom:0.2rem;">💰</div>
-            <div style="font-size:0.5rem;letter-spacing:0.1em;text-transform:uppercase;opacity:0.85;margin-bottom:0.25rem;">Revenue This Month</div>
-            <div style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;line-height:1;">£2,340</div>
-            <div style="font-size:0.55rem;opacity:0.75;margin-top:0.15rem;">↑ Updated from bookings</div>
-          </div>
-          <div style="background:#F5A623;border-radius:8px;padding:0.75rem;color:white;">
-            <div style="font-size:0.85rem;margin-bottom:0.2rem;">📅</div>
-            <div style="font-size:0.5rem;letter-spacing:0.1em;text-transform:uppercase;opacity:0.85;margin-bottom:0.25rem;">Bookings This Month</div>
-            <div style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;line-height:1;">24</div>
-            <div style="font-size:0.55rem;opacity:0.75;margin-top:0.15rem;">24 this month</div>
-          </div>
-          <div style="background:#E53935;border-radius:8px;padding:0.75rem;color:white;">
-            <div style="font-size:0.85rem;margin-bottom:0.2rem;">🚫</div>
-            <div style="font-size:0.5rem;letter-spacing:0.1em;text-transform:uppercase;opacity:0.85;margin-bottom:0.25rem;">No-Shows</div>
-            <div style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;line-height:1;">0</div>
-            <div style="font-size:0.55rem;opacity:0.75;margin-top:0.15rem;">0 this month</div>
-          </div>
-          <div style="background:#3B82F6;border-radius:8px;padding:0.75rem;color:white;">
-            <div style="font-size:0.85rem;margin-bottom:0.2rem;">⭐</div>
-            <div style="font-size:0.5rem;letter-spacing:0.1em;text-transform:uppercase;opacity:0.85;margin-bottom:0.25rem;">Avg. Booking Value</div>
-            <div style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;line-height:1;">£64</div>
-            <div style="font-size:0.55rem;opacity:0.75;margin-top:0.15rem;">Per appointment</div>
-          </div>
+          <div style="background:#4CAF50;border-radius:8px;padding:0.75rem;color:white;"><div style="font-size:0.85rem;margin-bottom:0.2rem;">💰</div><div style="font-size:0.5rem;letter-spacing:0.1em;text-transform:uppercase;opacity:0.85;margin-bottom:0.25rem;">Revenue This Month</div><div style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;line-height:1;">£2,340</div></div>
+          <div style="background:#F5A623;border-radius:8px;padding:0.75rem;color:white;"><div style="font-size:0.85rem;margin-bottom:0.2rem;">📅</div><div style="font-size:0.5rem;letter-spacing:0.1em;text-transform:uppercase;opacity:0.85;margin-bottom:0.25rem;">Bookings This Month</div><div style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;line-height:1;">24</div></div>
+          <div style="background:#E53935;border-radius:8px;padding:0.75rem;color:white;"><div style="font-size:0.85rem;margin-bottom:0.2rem;">🚫</div><div style="font-size:0.5rem;letter-spacing:0.1em;text-transform:uppercase;opacity:0.85;margin-bottom:0.25rem;">No-Shows</div><div style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;line-height:1;">0</div></div>
+          <div style="background:#3B82F6;border-radius:8px;padding:0.75rem;color:white;"><div style="font-size:0.85rem;margin-bottom:0.2rem;">⭐</div><div style="font-size:0.5rem;letter-spacing:0.1em;text-transform:uppercase;opacity:0.85;margin-bottom:0.25rem;">Avg. Booking Value</div><div style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;line-height:1;">£64</div></div>
         </div>
       </div>
       <div style="padding:0.6rem 1.25rem 1rem; font-size:0.72rem; color:#C4856A; font-weight:500; letter-spacing:0.04em;">📊 Business Overview Dashboard</div>
@@ -1330,34 +453,10 @@
         <div style="font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:#1C1410;margin-bottom:0.15rem;">Team <em style="color:#C4856A;">Availability</em></div>
         <div style="font-size:0.68rem;color:#8A7A72;margin-bottom:1rem;">Live booking capacity across your team this week.</div>
         <div style="display:grid;gap:0.75rem;margin-bottom:1rem;">
-          <div style="display:flex;align-items:center;gap:0.75rem;">
-            <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#3B82F6,#1D4ED8);color:white;font-size:0.7rem;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;">E</div>
-            <div style="flex:1;">
-              <div style="display:flex;justify-content:space-between;margin-bottom:0.3rem;"><span style="font-size:0.72rem;color:#1C1410;font-weight:500;">Emma</span><span style="font-size:0.65rem;color:#8A7A72;">4 booked</span></div>
-              <div style="background:#e8e8e8;border-radius:4px;height:7px;overflow:hidden;"><div style="width:28%;height:100%;background:#3B82F6;border-radius:4px;"></div></div>
-            </div>
-          </div>
-          <div style="display:flex;align-items:center;gap:0.75rem;">
-            <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#4CAF50,#2E7D32);color:white;font-size:0.7rem;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;">S</div>
-            <div style="flex:1;">
-              <div style="display:flex;justify-content:space-between;margin-bottom:0.3rem;"><span style="font-size:0.72rem;color:#1C1410;font-weight:500;">Sophie</span><span style="font-size:0.65rem;color:#8A7A72;">6 booked</span></div>
-              <div style="background:#e8e8e8;border-radius:4px;height:7px;overflow:hidden;"><div style="width:42%;height:100%;background:#4CAF50;border-radius:4px;"></div></div>
-            </div>
-          </div>
-          <div style="display:flex;align-items:center;gap:0.75rem;">
-            <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#F5A623,#D4860B);color:white;font-size:0.7rem;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;">A</div>
-            <div style="flex:1;">
-              <div style="display:flex;justify-content:space-between;margin-bottom:0.3rem;"><span style="font-size:0.72rem;color:#1C1410;font-weight:500;">Anna</span><span style="font-size:0.65rem;color:#8A7A72;">9 booked</span></div>
-              <div style="background:#e8e8e8;border-radius:4px;height:7px;overflow:hidden;"><div style="width:65%;height:100%;background:#F5A623;border-radius:4px;"></div></div>
-            </div>
-          </div>
-          <div style="display:flex;align-items:center;gap:0.75rem;">
-            <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#E91E8C,#880E4F);color:white;font-size:0.7rem;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;">M</div>
-            <div style="flex:1;">
-              <div style="display:flex;justify-content:space-between;margin-bottom:0.3rem;"><span style="font-size:0.72rem;color:#1C1410;font-weight:500;">Mia</span><span style="font-size:0.65rem;color:#8A7A72;">8 booked</span></div>
-              <div style="background:#e8e8e8;border-radius:4px;height:7px;overflow:hidden;"><div style="width:55%;height:100%;background:#E91E8C;border-radius:4px;"></div></div>
-            </div>
-          </div>
+          <div style="display:flex;align-items:center;gap:0.75rem;"><div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#3B82F6,#1D4ED8);color:white;font-size:0.7rem;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;">E</div><div style="flex:1;"><div style="display:flex;justify-content:space-between;margin-bottom:0.3rem;"><span style="font-size:0.72rem;color:#1C1410;font-weight:500;">Emma</span><span style="font-size:0.65rem;color:#8A7A72;">4 booked</span></div><div style="background:#e8e8e8;border-radius:4px;height:7px;overflow:hidden;"><div style="width:28%;height:100%;background:#3B82F6;border-radius:4px;"></div></div></div></div>
+          <div style="display:flex;align-items:center;gap:0.75rem;"><div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#4CAF50,#2E7D32);color:white;font-size:0.7rem;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;">S</div><div style="flex:1;"><div style="display:flex;justify-content:space-between;margin-bottom:0.3rem;"><span style="font-size:0.72rem;color:#1C1410;font-weight:500;">Sophie</span><span style="font-size:0.65rem;color:#8A7A72;">6 booked</span></div><div style="background:#e8e8e8;border-radius:4px;height:7px;overflow:hidden;"><div style="width:42%;height:100%;background:#4CAF50;border-radius:4px;"></div></div></div></div>
+          <div style="display:flex;align-items:center;gap:0.75rem;"><div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#F5A623,#D4860B);color:white;font-size:0.7rem;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;">A</div><div style="flex:1;"><div style="display:flex;justify-content:space-between;margin-bottom:0.3rem;"><span style="font-size:0.72rem;color:#1C1410;font-weight:500;">Anna</span><span style="font-size:0.65rem;color:#8A7A72;">9 booked</span></div><div style="background:#e8e8e8;border-radius:4px;height:7px;overflow:hidden;"><div style="width:65%;height:100%;background:#F5A623;border-radius:4px;"></div></div></div></div>
+          <div style="display:flex;align-items:center;gap:0.75rem;"><div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#E91E8C,#880E4F);color:white;font-size:0.7rem;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;">M</div><div style="flex:1;"><div style="display:flex;justify-content:space-between;margin-bottom:0.3rem;"><span style="font-size:0.72rem;color:#1C1410;font-weight:500;">Mia</span><span style="font-size:0.65rem;color:#8A7A72;">8 booked</span></div><div style="background:#e8e8e8;border-radius:4px;height:7px;overflow:hidden;"><div style="width:55%;height:100%;background:#E91E8C;border-radius:4px;"></div></div></div></div>
         </div>
         <div style="background:#FAF7F2;border-radius:6px;padding:0.75rem;display:flex;justify-content:space-around;">
           <div style="text-align:center;"><div style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:#C4856A;">62</div><div style="font-size:0.58rem;color:#8A7A72;text-transform:uppercase;letter-spacing:0.08em;">Free Slots</div></div>
@@ -1392,36 +491,18 @@
         </div>
         <div style="font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:#8A7A72;margin-bottom:0.75rem;">Choose Your Service</div>
         <div style="display:grid;gap:0.4rem;">
-          <div style="display:flex;align-items:center;padding:0.6rem 0.75rem;border:1px solid rgba(196,133,106,0.18);border-radius:4px;gap:0.6rem;">
-            <span style="width:8px;height:8px;border-radius:50%;border:1.5px solid #8A7A72;flex-shrink:0;"></span>
-            <div style="flex:1;"><div style="font-size:0.78rem;color:#1C1410;">Lash Lift & Tint</div><div style="font-size:0.62rem;color:#8A7A72;">45 min</div></div>
-            <div style="font-size:0.78rem;color:#1C1410;font-weight:500;">£55</div>
-          </div>
-          <div style="display:flex;align-items:center;padding:0.6rem 0.75rem;border:1.5px solid #3A2E28;border-radius:4px;gap:0.6rem;background:rgba(58,46,40,0.04);">
-            <span style="width:8px;height:8px;border-radius:50%;background:#3A2E28;flex-shrink:0;"></span>
-            <div style="flex:1;"><div style="font-size:0.78rem;color:#1C1410;font-weight:600;">Luxury Facial</div><div style="font-size:0.62rem;color:#8A7A72;">60 min</div></div>
-            <div style="font-size:0.78rem;color:#1C1410;font-weight:600;">£75</div>
-          </div>
-          <div style="display:flex;align-items:center;padding:0.6rem 0.75rem;border:1px solid rgba(196,133,106,0.18);border-radius:4px;gap:0.6rem;">
-            <span style="width:8px;height:8px;border-radius:50%;border:1.5px solid #8A7A72;flex-shrink:0;"></span>
-            <div style="flex:1;"><div style="font-size:0.78rem;color:#1C1410;">Gel Manicure</div><div style="font-size:0.62rem;color:#8A7A72;">60 min</div></div>
-            <div style="font-size:0.78rem;color:#1C1410;font-weight:500;">£45</div>
-          </div>
-          <div style="display:flex;align-items:center;padding:0.6rem 0.75rem;border:1px solid rgba(196,133,106,0.18);border-radius:4px;gap:0.6rem;">
-            <span style="width:8px;height:8px;border-radius:50%;border:1.5px solid #8A7A72;flex-shrink:0;"></span>
-            <div style="flex:1;"><div style="font-size:0.78rem;color:#1C1410;">Brow Sculpt & Tint</div><div style="font-size:0.62rem;color:#8A7A72;">30 min</div></div>
-            <div style="font-size:0.78rem;color:#1C1410;font-weight:500;">£35</div>
-          </div>
+          <div style="display:flex;align-items:center;padding:0.6rem 0.75rem;border:1px solid rgba(196,133,106,0.18);border-radius:4px;gap:0.6rem;"><span style="width:8px;height:8px;border-radius:50%;border:1.5px solid #8A7A72;flex-shrink:0;"></span><div style="flex:1;"><div style="font-size:0.78rem;color:#1C1410;">Lash Lift & Tint</div><div style="font-size:0.62rem;color:#8A7A72;">45 min</div></div><div style="font-size:0.78rem;color:#1C1410;font-weight:500;">£55</div></div>
+          <div style="display:flex;align-items:center;padding:0.6rem 0.75rem;border:1.5px solid #3A2E28;border-radius:4px;gap:0.6rem;background:rgba(58,46,40,0.04);"><span style="width:8px;height:8px;border-radius:50%;background:#3A2E28;flex-shrink:0;"></span><div style="flex:1;"><div style="font-size:0.78rem;color:#1C1410;font-weight:600;">Luxury Facial</div><div style="font-size:0.62rem;color:#8A7A72;">60 min</div></div><div style="font-size:0.78rem;color:#1C1410;font-weight:600;">£75</div></div>
+          <div style="display:flex;align-items:center;padding:0.6rem 0.75rem;border:1px solid rgba(196,133,106,0.18);border-radius:4px;gap:0.6rem;"><span style="width:8px;height:8px;border-radius:50%;border:1.5px solid #8A7A72;flex-shrink:0;"></span><div style="flex:1;"><div style="font-size:0.78rem;color:#1C1410;">Gel Manicure</div><div style="font-size:0.62rem;color:#8A7A72;">60 min</div></div><div style="font-size:0.78rem;color:#1C1410;font-weight:500;">£45</div></div>
         </div>
-        <div style="margin-top:0.75rem;text-align:right;">
-          <span style="background:#3A2E28;color:#FAF7F2;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.55rem 1.1rem;border-radius:2px;display:inline-block;">Continue →</span>
-        </div>
+        <div style="margin-top:0.75rem;text-align:right;"><span style="background:#3A2E28;color:#FAF7F2;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.55rem 1.1rem;border-radius:2px;display:inline-block;">Continue →</span></div>
       </div>
       <div style="padding:0.6rem 1.25rem 1rem; font-size:0.72rem; color:#C4856A; font-weight:500; letter-spacing:0.04em;">✦ Client-Facing Booking Experience</div>
     </div>
-
   </div>
 </section>
+
+<!-- PROBLEM -->
 <section id="problem" style="background: var(--white);">
   <div style="display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center;">
     <div>
@@ -1431,38 +512,20 @@
       <p style="font-size:0.95rem; color:var(--charcoal); line-height:1.8; font-weight:300;">A modern beauty business needs more than just a website. It needs a digital system that manages bookings, services and clients — all under your own brand.</p>
     </div>
     <div style="display:grid; gap:1rem;">
-      <div style="background:#FEF2F2; border:1px solid #FECACA; border-radius:8px; padding:1.5rem; display:flex; align-items:flex-start; gap:1rem;">
-        <span style="font-size:1.5rem; flex-shrink:0;">💸</span>
-        <div><div style="font-weight:500; color:#1C1410; margin-bottom:0.3rem; font-size:0.9rem;">Commission on every booking</div><div style="font-size:0.82rem; color:#8A7A72; line-height:1.6;">Third-party platforms take a cut of each appointment, reducing your margins every time.</div></div>
-      </div>
-      <div style="background:#FEF2F2; border:1px solid #FECACA; border-radius:8px; padding:1.5rem; display:flex; align-items:flex-start; gap:1rem;">
-        <span style="font-size:1.5rem; flex-shrink:0;">🔒</span>
-        <div><div style="font-weight:500; color:#1C1410; margin-bottom:0.3rem; font-size:0.9rem;">You don't own your client data</div><div style="font-size:0.82rem; color:#8A7A72; line-height:1.6;">Platforms control access to your client list. If you leave, you lose the relationship.</div></div>
-      </div>
-      <div style="background:#FEF2F2; border:1px solid #FECACA; border-radius:8px; padding:1.5rem; display:flex; align-items:flex-start; gap:1rem;">
-        <span style="font-size:1.5rem; flex-shrink:0;">🎨</span>
-        <div><div style="font-weight:500; color:#1C1410; margin-bottom:0.3rem; font-size:0.9rem;">Generic, off-brand experience</div><div style="font-size:0.82rem; color:#8A7A72; line-height:1.6;">Clients book through someone else's platform — not your brand. That's not how premium businesses operate.</div></div>
-      </div>
+      <div style="background:#FEF2F2; border:1px solid #FECACA; border-radius:8px; padding:1.5rem; display:flex; align-items:flex-start; gap:1rem;"><span style="font-size:1.5rem; flex-shrink:0;">💸</span><div><div style="font-weight:500; color:#1C1410; margin-bottom:0.3rem; font-size:0.9rem;">Commission on every booking</div><div style="font-size:0.82rem; color:#8A7A72; line-height:1.6;">Third-party platforms take a cut of each appointment, reducing your margins every time.</div></div></div>
+      <div style="background:#FEF2F2; border:1px solid #FECACA; border-radius:8px; padding:1.5rem; display:flex; align-items:flex-start; gap:1rem;"><span style="font-size:1.5rem; flex-shrink:0;">🔒</span><div><div style="font-weight:500; color:#1C1410; margin-bottom:0.3rem; font-size:0.9rem;">You don't own your client data</div><div style="font-size:0.82rem; color:#8A7A72; line-height:1.6;">Platforms control access to your client list. If you leave, you lose the relationship.</div></div></div>
+      <div style="background:#FEF2F2; border:1px solid #FECACA; border-radius:8px; padding:1.5rem; display:flex; align-items:flex-start; gap:1rem;"><span style="font-size:1.5rem; flex-shrink:0;">🎨</span><div><div style="font-weight:500; color:#1C1410; margin-bottom:0.3rem; font-size:0.9rem;">Generic, off-brand experience</div><div style="font-size:0.82rem; color:#8A7A72; line-height:1.6;">Clients book through someone else's platform — not your brand. That's not how premium businesses operate.</div></div></div>
     </div>
   </div>
 </section>
 
-<!-- THE SOLUTION -->
+<!-- SOLUTION -->
 <section id="solution" style="background: var(--cream);">
   <div style="display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center;">
     <div style="display:grid; gap:1rem;">
-      <div style="background:var(--white); border:1px solid rgba(196,133,106,0.18); border-radius:8px; padding:1.5rem; display:flex; align-items:flex-start; gap:1rem;">
-        <span style="font-size:1.5rem; flex-shrink:0;">🌐</span>
-        <div><div style="font-weight:500; color:#1C1410; margin-bottom:0.3rem; font-size:0.9rem;">Your own branded website</div><div style="font-size:0.82rem; color:#8A7A72; line-height:1.6;">A custom site designed around your brand — not a template, not a directory listing.</div></div>
-      </div>
-      <div style="background:var(--white); border:1px solid rgba(196,133,106,0.18); border-radius:8px; padding:1.5rem; display:flex; align-items:flex-start; gap:1rem;">
-        <span style="font-size:1.5rem; flex-shrink:0;">📅</span>
-        <div><div style="font-weight:500; color:#1C1410; margin-bottom:0.3rem; font-size:0.9rem;">Booking built directly in</div><div style="font-size:0.82rem; color:#8A7A72; line-height:1.6;">Clients book, pay deposits and manage appointments without ever leaving your site.</div></div>
-      </div>
-      <div style="background:var(--white); border:1px solid rgba(196,133,106,0.18); border-radius:8px; padding:1.5rem; display:flex; align-items:flex-start; gap:1rem;">
-        <span style="font-size:1.5rem; flex-shrink:0;">👑</span>
-        <div><div style="font-weight:500; color:#1C1410; margin-bottom:0.3rem; font-size:0.9rem;">You keep full control</div><div style="font-size:0.82rem; color:#8A7A72; line-height:1.6;">Your clients, your data, your brand. No commissions, no middleman, no compromise.</div></div>
-      </div>
+      <div style="background:var(--white); border:1px solid rgba(196,133,106,0.18); border-radius:8px; padding:1.5rem; display:flex; align-items:flex-start; gap:1rem;"><span style="font-size:1.5rem; flex-shrink:0;">🌐</span><div><div style="font-weight:500; color:#1C1410; margin-bottom:0.3rem; font-size:0.9rem;">Your own branded website</div><div style="font-size:0.82rem; color:#8A7A72; line-height:1.6;">A custom site designed around your brand — not a template, not a directory listing.</div></div></div>
+      <div style="background:var(--white); border:1px solid rgba(196,133,106,0.18); border-radius:8px; padding:1.5rem; display:flex; align-items:flex-start; gap:1rem;"><span style="font-size:1.5rem; flex-shrink:0;">📅</span><div><div style="font-weight:500; color:#1C1410; margin-bottom:0.3rem; font-size:0.9rem;">Booking built directly in</div><div style="font-size:0.82rem; color:#8A7A72; line-height:1.6;">Clients book, pay deposits and manage appointments without ever leaving your site.</div></div></div>
+      <div style="background:var(--white); border:1px solid rgba(196,133,106,0.18); border-radius:8px; padding:1.5rem; display:flex; align-items:flex-start; gap:1rem;"><span style="font-size:1.5rem; flex-shrink:0;">👑</span><div><div style="font-weight:500; color:#1C1410; margin-bottom:0.3rem; font-size:0.9rem;">You keep full control</div><div style="font-size:0.82rem; color:#8A7A72; line-height:1.6;">Your clients, your data, your brand. No commissions, no middleman, no compromise.</div></div></div>
     </div>
     <div>
       <div class="section-label">The solution</div>
@@ -1479,36 +542,12 @@
   <h2>Everything in one<br><em>branded platform</em></h2>
   <p class="section-sub">Built specifically for beauty businesses — combining elegant design with the tools that matter.</p>
   <div class="features-grid reveal">
-    <div class="feature-card">
-      <div class="feature-icon">🎨</div>
-      <h3>Branded Website Design</h3>
-      <p>A professional website designed to match the aesthetic of modern beauty brands.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">📅</div>
-      <h3>Online Appointment Booking</h3>
-      <p>Allow clients to select services and book appointments directly through your website.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">💳</div>
-      <h3>Secure Deposit Collection</h3>
-      <p>Reduce cancellations and secure appointments with integrated deposit payments.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">👥</div>
-      <h3>Client Management</h3>
-      <p>Keep track of clients, services and appointment history in one organised system.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">📱</div>
-      <h3>Mobile Friendly Experience</h3>
-      <p>Clients can easily book appointments from their phone or tablet.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">✨</div>
-      <h3>Professional Brand Presence</h3>
-      <p>Your website becomes the centre of your online presence.</p>
-    </div>
+    <div class="feature-card"><div class="feature-icon">🎨</div><h3>Branded Website Design</h3><p>A professional website designed to match the aesthetic of modern beauty brands.</p></div>
+    <div class="feature-card"><div class="feature-icon">📅</div><h3>Online Appointment Booking</h3><p>Allow clients to select services and book appointments directly through your website.</p></div>
+    <div class="feature-card"><div class="feature-icon">💳</div><h3>Secure Deposit Collection</h3><p>Reduce cancellations and secure appointments with integrated Stripe deposit payments.</p></div>
+    <div class="feature-card"><div class="feature-icon">👥</div><h3>Client Management</h3><p>Keep track of clients, services and appointment history in one organised system.</p></div>
+    <div class="feature-card"><div class="feature-icon">📱</div><h3>SMS & Email Reminders</h3><p>Automated reminders sent to clients before every appointment — reducing no-shows automatically.</p></div>
+    <div class="feature-card"><div class="feature-icon">✨</div><h3>Owner Portal & Dashboard</h3><p>Manage services, prices, staff and bookings from a clean owner dashboard — no tech knowledge needed.</p></div>
   </div>
 </section>
 
@@ -1522,30 +561,12 @@
       <p style="color: rgba(250,247,242,0.45); font-size:0.9rem; font-weight:300; line-height:1.7;">Whether you are working independently or running a growing salon, your website should support the way your business operates.</p>
     </div>
     <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.75rem;" class="reveal">
-      <div style="border: 1px solid rgba(232,197,176,0.2); border-radius: 6px; padding: 1.25rem 1.25rem; display:flex; align-items:center; gap:0.75rem;">
-        <span style="font-size:1.3rem;">💇</span>
-        <span style="font-size:0.88rem; color:rgba(250,247,242,0.85);">Beauty salons</span>
-      </div>
-      <div style="border: 1px solid rgba(232,197,176,0.2); border-radius: 6px; padding: 1.25rem 1.25rem; display:flex; align-items:center; gap:0.75rem;">
-        <span style="font-size:1.3rem;">🏥</span>
-        <span style="font-size:0.88rem; color:rgba(250,247,242,0.85);">Aesthetic clinics</span>
-      </div>
-      <div style="border: 1px solid rgba(232,197,176,0.2); border-radius: 6px; padding: 1.25rem 1.25rem; display:flex; align-items:center; gap:0.75rem;">
-        <span style="font-size:1.3rem;">✂️</span>
-        <span style="font-size:0.88rem; color:rgba(250,247,242,0.85);">Hair stylists</span>
-      </div>
-      <div style="border: 1px solid rgba(232,197,176,0.2); border-radius: 6px; padding: 1.25rem 1.25rem; display:flex; align-items:center; gap:0.75rem;">
-        <span style="font-size:1.3rem;">💅</span>
-        <span style="font-size:0.88rem; color:rgba(250,247,242,0.85);">Nail technicians</span>
-      </div>
-      <div style="border: 1px solid rgba(232,197,176,0.2); border-radius: 6px; padding: 1.25rem 1.25rem; display:flex; align-items:center; gap:0.75rem;">
-        <span style="font-size:1.3rem;">🌸</span>
-        <span style="font-size:0.88rem; color:rgba(250,247,242,0.85);">Beauty studios</span>
-      </div>
-      <div style="border: 1px solid rgba(232,197,176,0.2); border-radius: 6px; padding: 1.25rem 1.25rem; display:flex; align-items:center; gap:0.75rem;">
-        <span style="font-size:1.3rem;">👤</span>
-        <span style="font-size:0.88rem; color:rgba(250,247,242,0.85);">Independent pros</span>
-      </div>
+      <div style="border: 1px solid rgba(232,197,176,0.2); border-radius: 6px; padding: 1.25rem; display:flex; align-items:center; gap:0.75rem;"><span style="font-size:1.3rem;">💇</span><span style="font-size:0.88rem; color:rgba(250,247,242,0.85);">Beauty salons</span></div>
+      <div style="border: 1px solid rgba(232,197,176,0.2); border-radius: 6px; padding: 1.25rem; display:flex; align-items:center; gap:0.75rem;"><span style="font-size:1.3rem;">🏥</span><span style="font-size:0.88rem; color:rgba(250,247,242,0.85);">Aesthetic clinics</span></div>
+      <div style="border: 1px solid rgba(232,197,176,0.2); border-radius: 6px; padding: 1.25rem; display:flex; align-items:center; gap:0.75rem;"><span style="font-size:1.3rem;">✂️</span><span style="font-size:0.88rem; color:rgba(250,247,242,0.85);">Hair stylists</span></div>
+      <div style="border: 1px solid rgba(232,197,176,0.2); border-radius: 6px; padding: 1.25rem; display:flex; align-items:center; gap:0.75rem;"><span style="font-size:1.3rem;">💅</span><span style="font-size:0.88rem; color:rgba(250,247,242,0.85);">Nail technicians</span></div>
+      <div style="border: 1px solid rgba(232,197,176,0.2); border-radius: 6px; padding: 1.25rem; display:flex; align-items:center; gap:0.75rem;"><span style="font-size:1.3rem;">🌸</span><span style="font-size:0.88rem; color:rgba(250,247,242,0.85);">Beauty studios</span></div>
+      <div style="border: 1px solid rgba(232,197,176,0.2); border-radius: 6px; padding: 1.25rem; display:flex; align-items:center; gap:0.75rem;"><span style="font-size:1.3rem;">👤</span><span style="font-size:0.88rem; color:rgba(250,247,242,0.85);">Independent pros</span></div>
     </div>
   </div>
 </section>
@@ -1554,12 +575,11 @@
 <section id="packages">
   <div class="section-label">Pricing</div>
   <h2>Choose the system that<br><em>fits your business</em></h2>
-  <p class="section-sub">Aura Systems Design offers flexible packages designed to suit different stages of business growth. Whether you are just starting out or running an established salon, there is a solution designed to support your brand and booking needs. Every package is fully built and managed for you — no tech knowledge needed.</p>
+  <p class="section-sub">Flexible packages designed to suit different stages of business growth. Every package is fully built and managed for you — no tech knowledge needed.</p>
 
-  <!-- BILLING TOGGLE -->
   <div class="billing-toggle-wrapper">
-    <span class="toggle-label" id="label-monthly">Monthly Rolling</span>
-    <div class="billing-toggle" onclick="toggleBilling()">
+    <span class="toggle-label active" id="label-monthly">Monthly Rolling</span>
+    <div class="billing-toggle" id="billingToggle" onclick="toggleBilling()">
       <div class="toggle-knob" id="toggle-knob"></div>
     </div>
     <span class="toggle-label" id="label-annual">12 Month Plan <span class="save-badge">Save ~20%</span></span>
@@ -1573,12 +593,9 @@
       <div class="package-title">Presence</div>
       <div class="package-price">
         <span class="price-setup">£499 <small>one-off setup</small></span>
-        <span class="price-monthly">
-          + <span class="price-val" data-monthly="£69" data-annual="£55">£69</span> / month
-        </span>
+        <span class="price-monthly">+ <span class="price-val" data-monthly="£79" data-annual="£63">£79</span> / month</span>
         <span class="price-commitment" id="commitment-presence"></span>
       </div>
-
       <div class="package-section-label">We build you</div>
       <ul class="package-features">
         <li>Custom designed website — built from scratch for your brand</li>
@@ -1588,17 +605,15 @@
         <li>Social media links &amp; enquiry form</li>
         <li>SSL certificate &amp; secure hosting setup</li>
       </ul>
-
       <div class="package-section-label">Monthly subscription includes</div>
       <ul class="package-features">
-        <li>&#9679; Hosting &amp; domain management</li>
-        <li>&#9679; Security &amp; software updates</li>
-        <li>&#9679; Monthly content &amp; text updates (up to 2 changes/mo)</li>
-        <li>&#9679; Performance monitoring</li>
-        <li>&#9679; Email &amp; WhatsApp support</li>
+        <li>Hosting &amp; domain management</li>
+        <li>Security &amp; software updates</li>
+        <li>Monthly content &amp; text updates (up to 2 changes/mo)</li>
+        <li>Performance monitoring</li>
+        <li>Email &amp; WhatsApp support</li>
       </ul>
-
-      <a href="#contact" class="btn-package" onclick="selectPackage('Presence')">Get Started</a>
+      <a href="#demo" class="btn-package" onclick="selectPackage('Presence')">Get Started</a>
     </div>
 
     <!-- BOOKABLE -->
@@ -1608,32 +623,28 @@
       <div class="package-title">Bookable</div>
       <div class="package-price">
         <span class="price-setup">£799 <small>one-off setup</small></span>
-        <span class="price-monthly">
-          + <span class="price-val" data-monthly="£119" data-annual="£95">£119</span> / month
-        </span>
+        <span class="price-monthly">+ <span class="price-val" data-monthly="£119" data-annual="£95">£119</span> / month</span>
+        <span class="stripe-notice">+ Stripe processing fees (1.5% + 20p per transaction)</span>
         <span class="price-commitment" id="commitment-bookable"></span>
       </div>
-
       <div class="package-section-label">We build you</div>
       <ul class="package-features">
         <li>Everything in Presence</li>
         <li>Online booking calendar with real-time availability</li>
         <li>Service menu with live pricing &amp; durations</li>
-        <li>Deposit collection to reduce no-shows</li>
-        <li>Automated booking confirmations &amp; reminders</li>
+        <li>Stripe deposit collection to reduce no-shows</li>
+        <li>Automated booking confirmations &amp; SMS reminders</li>
         <li>Cancellation &amp; rescheduling policy setup</li>
       </ul>
-
       <div class="package-section-label">Monthly subscription includes</div>
       <ul class="package-features">
-        <li>&#9679; Everything in Presence monthly plan</li>
-        <li>&#9679; Booking system management &amp; updates</li>
-        <li>&#9679; Service &amp; pricing updates on request</li>
-        <li>&#9679; Deposit &amp; cancellation policy updates</li>
-        <li>&#9679; Priority email &amp; WhatsApp support</li>
+        <li>Everything in Presence monthly plan</li>
+        <li>Booking system management &amp; updates</li>
+        <li>Service &amp; pricing updates via owner portal</li>
+        <li>Deposit &amp; cancellation policy updates</li>
+        <li>Priority email &amp; WhatsApp support</li>
       </ul>
-
-      <a href="#contact" class="btn-package" onclick="selectPackage('Bookable')">Get Started</a>
+      <a href="#demo" class="btn-package" onclick="selectPackage('Bookable')">Get Started</a>
     </div>
 
     <!-- FULL SUITE -->
@@ -1642,57 +653,53 @@
       <div class="package-title">Full Suite</div>
       <div class="package-price">
         <span class="price-setup">£1,199 <small>one-off setup</small></span>
-        <span class="price-monthly">
-          + <span class="price-val" data-monthly="£179" data-annual="£145">£179</span> / month
-        </span>
+        <span class="price-monthly">+ <span class="price-val" data-monthly="£199" data-annual="£159">£199</span> / month</span>
+        <span class="stripe-notice">+ Stripe processing fees (1.5% + 20p per transaction)</span>
         <span class="price-commitment" id="commitment-suite"></span>
       </div>
-
       <div class="package-section-label">We build you</div>
       <ul class="package-features">
         <li>Everything in Bookable</li>
         <li>Full client CRM — built &amp; configured for your business</li>
-        <li>Revenue &amp; bookings dashboard</li>
-        <li>Business performance analytics</li>
+        <li>Revenue &amp; bookings dashboard with analytics</li>
+        <li>Staff management &amp; capacity tracking</li>
         <li>No-show protection &amp; deposit tools</li>
         <li>Full onboarding call &amp; staff walkthrough</li>
       </ul>
-
       <div class="package-section-label">Monthly subscription includes</div>
       <ul class="package-features">
-        <li>&#9679; Everything in Bookable monthly plan</li>
-        <li>&#9679; CRM setup, maintenance &amp; ongoing support</li>
-        <li>&#9679; Monthly analytics report sent to you</li>
-        <li>&#9679; Unlimited content &amp; pricing updates</li>
-        <li>&#9679; Priority support — fastest response times</li>
+        <li>Everything in Bookable monthly plan</li>
+        <li>CRM setup, maintenance &amp; ongoing support</li>
+        <li>Monthly analytics report sent to you</li>
+        <li>Unlimited content &amp; pricing updates</li>
+        <li>Priority support — fastest response times</li>
       </ul>
-
-      <a href="#contact" class="btn-package" onclick="selectPackage('Full Suite')">Get Started</a>
+      <a href="#demo" class="btn-package" onclick="selectPackage('Full Suite')">Get Started</a>
     </div>
 
   </div>
 
-  <!-- WHAT'S ALWAYS INCLUDED -->
   <div class="packages-footer reveal">
     <div class="pf-title">Every package includes</div>
     <div class="pf-grid">
-      <div class="pf-item"><span class="pf-icon">&#9679;</span> Custom design — no templates</div>
-      <div class="pf-item"><span class="pf-icon">&#9679;</span> Hosted &amp; managed by us</div>
-      <div class="pf-item"><span class="pf-icon">&#9679;</span> SSL security certificate</div>
-      <div class="pf-item"><span class="pf-icon">&#9679;</span> Mobile &amp; tablet optimised</div>
-      <div class="pf-item"><span class="pf-icon">&#9679;</span> Monthly updates included</div>
-      <div class="pf-item"><span class="pf-icon">&#9679;</span> Your data is always yours</div>
+      <div class="pf-item"><span class="pf-icon">✓</span> Custom design — no templates</div>
+      <div class="pf-item"><span class="pf-icon">✓</span> Hosted &amp; managed by us</div>
+      <div class="pf-item"><span class="pf-icon">✓</span> SSL security certificate</div>
+      <div class="pf-item"><span class="pf-icon">✓</span> Mobile &amp; tablet optimised</div>
+      <div class="pf-item"><span class="pf-icon">✓</span> Monthly updates included</div>
+      <div class="pf-item"><span class="pf-icon">✓</span> Your data is always yours</div>
     </div>
   </div>
 
-  <!-- CANCELLATION POLICY -->
   <div class="policy-note">
-    <div class="policy-icon">&#8505;&#65039;</div>
+    <div class="policy-icon">ℹ️</div>
     <div class="policy-text">
       <strong>Transparent cancellation policy:</strong> Setup fees are non-refundable — they cover your design &amp; build.
       Monthly rolling plans require 30 days written notice to cancel.
       On the 12 month plan, early cancellation is charged at 50% of remaining months.
       On cancellation, your website stays live — booking &amp; CRM systems deactivate. Your client data is always exported and returned to you before deactivation.
+      <br><br>
+      <strong>Stripe processing fees:</strong> Bookable and Full Suite packages use Stripe for payment processing. Standard UK card fees of 1.5% + 20p per transaction apply and are charged directly by Stripe to your connected account — not by Aura Systems Design.
     </div>
   </div>
 </section>
@@ -1703,26 +710,10 @@
   <h2>Simple process,<br><em>fast results.</em></h2>
   <p class="section-sub">From your first demo to going live, we keep everything clear and straightforward.</p>
   <div class="steps-grid reveal">
-    <div class="step">
-      <div class="step-num">01</div>
-      <h3>Book a Demo</h3>
-      <p>Schedule a short online demonstration where we show how your own system could work.</p>
-    </div>
-    <div class="step">
-      <div class="step-num">02</div>
-      <h3>Design & Setup</h3>
-      <p>Your website and booking system are designed around your brand and services.</p>
-    </div>
-    <div class="step">
-      <div class="step-num">03</div>
-      <h3>Review & Approve</h3>
-      <p>You review everything. We refine until it's perfect. Full revisions included before go-live.</p>
-    </div>
-    <div class="step">
-      <div class="step-num">04</div>
-      <h3>Launch Your Platform</h3>
-      <p>Your beauty business goes live with a professional website and integrated booking experience.</p>
-    </div>
+    <div class="step"><div class="step-num">01</div><h3>Book a Demo</h3><p>Schedule a short online demonstration where we show how your own system could work.</p></div>
+    <div class="step"><div class="step-num">02</div><h3>Design & Setup</h3><p>Your website and booking system are designed around your brand and services.</p></div>
+    <div class="step"><div class="step-num">03</div><h3>Review & Approve</h3><p>You review everything. We refine until it's perfect. Full revisions included before go-live.</p></div>
+    <div class="step"><div class="step-num">04</div><h3>Launch Your Platform</h3><p>Your beauty business goes live with a professional website and integrated booking experience.</p></div>
   </div>
 </section>
 
@@ -1735,35 +726,17 @@
     <div class="testimonial">
       <div class="testimonial-stars">★★★★★</div>
       <div class="testimonial-quote">"I went from taking bookings via Instagram DMs to having a fully automated system. My no-shows have basically disappeared since I started taking deposits."</div>
-      <div class="testimonial-author">
-        <div class="author-avatar">S</div>
-        <div>
-          <div class="author-name">Sophie Clarke</div>
-          <div class="author-biz">Lash & Brow Studio, Manchester</div>
-        </div>
-      </div>
+      <div class="testimonial-author"><div class="author-avatar">S</div><div><div class="author-name">Sophie Clarke</div><div class="author-biz">Lash & Brow Studio, Manchester</div></div></div>
     </div>
     <div class="testimonial">
       <div class="testimonial-stars">★★★★★</div>
       <div class="testimonial-quote">"The dashboard is incredible. For the first time I actually know which services are making me money and which ones aren't worth my time."</div>
-      <div class="testimonial-author">
-        <div class="author-avatar">A</div>
-        <div>
-          <div class="author-name">Amara Osei</div>
-          <div class="author-biz">Amara Beauty, London</div>
-        </div>
-      </div>
+      <div class="testimonial-author"><div class="author-avatar">A</div><div><div class="author-name">Amara Osei</div><div class="author-biz">Amara Beauty, London</div></div></div>
     </div>
     <div class="testimonial">
       <div class="testimonial-stars">★★★★★</div>
       <div class="testimonial-quote">"My clients constantly compliment how professional the website looks. It was up and running within a week and the support has been brilliant."</div>
-      <div class="testimonial-author">
-        <div class="author-avatar">J</div>
-        <div>
-          <div class="author-name">Jessica Harding</div>
-          <div class="author-biz">The Nail Bar, Leeds</div>
-        </div>
-      </div>
+      <div class="testimonial-author"><div class="author-avatar">J</div><div><div class="author-name">Jessica Harding</div><div class="author-biz">The Nail Bar, Leeds</div></div></div>
     </div>
   </div>
 </section>
@@ -1772,8 +745,7 @@
 <section id="demo">
   <div class="section-label">Book a demo</div>
   <h2>Ready to build your<br><em>beauty business platform?</em></h2>
-  <p class="section-sub">If you want a website that does more than just display your services, Aura Systems Design can create a complete online system tailored to your business. Let your clients book appointments easily while you manage your business with confidence.</p>
-
+  <p class="section-sub">If you want a website that does more than just display your services, Aura Systems Design can create a complete online system tailored to your business.</p>
   <div class="demo-form-wrapper">
     <p style="color: var(--blush); font-size:0.85rem; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:1.5rem; font-weight:500;">Book Your Private Demo</p>
     <iframe
@@ -1793,30 +765,12 @@
   <div class="section-label">Questions</div>
   <h2>Frequently<br><em>asked</em></h2>
   <div class="faq-list reveal">
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">Do I need any technical knowledge? <span>+</span></div>
-      <div class="faq-a">None at all. We handle everything — design, build, hosting, and setup. You just tell us about your business and we do the rest. We also train you on how to use the booking system.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">How long does it take to go live? <span>+</span></div>
-      <div class="faq-a">Most websites are live within 3–5 working days. For the Full Suite package with CRM and payments, allow 5–7 days. We keep you updated throughout the entire process.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">Can I upgrade my package later? <span>+</span></div>
-      <div class="faq-a">Yes, absolutely. You can start with Presence and upgrade to Bookable or Full Suite whenever you're ready. We'll apply a credit for the setup fee difference.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">What payment provider do you use? <span>+</span></div>
-      <div class="faq-a">We integrate Stripe, one of the world's most trusted payment processors. Stripe handles deposits and full payments securely, and funds transfer directly to your bank account within 2 business days.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">Is the monthly fee on a contract? <span>+</span></div>
-      <div class="faq-a">No long-term contracts. Our monthly plans are rolling and you can cancel any time. We're confident you'll love the results — but we never lock you in.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">What support do you offer? <span>+</span></div>
-      <div class="faq-a">All plans include email support. Full Suite clients get priority support and a dedicated onboarding call. We're here when you need us.</div>
-    </div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Do I need any technical knowledge? <span>+</span></div><div class="faq-a">None at all. We handle everything — design, build, hosting, and setup. You just tell us about your business and we do the rest. We also train you on how to use the booking system.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How long does it take to go live? <span>+</span></div><div class="faq-a">Most websites are live within 3–5 working days. For the Full Suite package with CRM and payments, allow 5–7 days. We keep you updated throughout the entire process.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Can I upgrade my package later? <span>+</span></div><div class="faq-a">Yes, absolutely. You can start with Presence and upgrade to Bookable or Full Suite whenever you're ready. We'll apply a credit for the setup fee difference.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What are the Stripe processing fees? <span>+</span></div><div class="faq-a">Stripe charges 1.5% + 20p per UK card transaction (2.5% + 20p for international cards). These fees are charged directly by Stripe to your connected account — Aura Systems Design does not take any percentage of your bookings. Ever.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Is the monthly fee on a contract? <span>+</span></div><div class="faq-a">No long-term contracts on monthly rolling plans. Cancel any time with 30 days notice. The 12 month plan offers ~20% savings with a minimum term commitment.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What support do you offer? <span>+</span></div><div class="faq-a">All plans include email and WhatsApp support. Full Suite clients get priority support and a dedicated onboarding call. We're here when you need us.</div></div>
   </div>
 </section>
 
@@ -1859,65 +813,27 @@
 </div>
 
 <script>
-  // Billing toggle
   let isAnnual = false;
 
   function toggleBilling() {
     isAnnual = !isAnnual;
-    const toggle = document.querySelector('.billing-toggle');
-    const labelMonthly = document.getElementById('label-monthly');
-    const labelAnnual = document.getElementById('label-annual');
-
-    toggle.classList.toggle('annual', isAnnual);
-
-    labelMonthly.classList.toggle('active', !isAnnual);
-    labelAnnual.classList.toggle('active', isAnnual);
-
-    // Update all prices
+    document.getElementById('billingToggle').classList.toggle('annual', isAnnual);
+    document.getElementById('label-monthly').classList.toggle('active', !isAnnual);
+    document.getElementById('label-annual').classList.toggle('active', isAnnual);
     document.querySelectorAll('.price-val').forEach(el => {
       el.textContent = isAnnual ? el.dataset.annual : el.dataset.monthly;
     });
-
-    // Update commitment labels
-    const commitments = ['commitment-presence', 'commitment-bookable', 'commitment-suite'];
-    commitments.forEach(id => {
+    const msg = isAnnual ? '12 month minimum term' : 'Rolling monthly · 30 days notice to cancel';
+    ['commitment-presence','commitment-bookable','commitment-suite'].forEach(id => {
       const el = document.getElementById(id);
-      if (el) el.textContent = isAnnual ? '12 month minimum term' : 'Rolling monthly · 30 days notice to cancel';
+      if (el) el.textContent = msg;
     });
   }
 
-  // Set monthly as active on load
-  document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('label-monthly').classList.add('active');
-    showTab('dash');
-  });
-
-  // Package selection
-  let selectedPackage = 'Bookable';
-
   function selectPackage(pkg) {
-    selectedPackage = pkg;
-    document.querySelectorAll('.pkg-option').forEach(el => el.classList.remove('selected'));
-    const map = { 'Presence': 'pkg-presence', 'Bookable': 'pkg-bookable', 'Full Suite': 'pkg-suite' };
-    const el = document.getElementById(map[pkg]);
-    if (el) el.classList.add('selected');
     document.getElementById('demo').scrollIntoView({ behavior: 'smooth' });
   }
 
-  // Demo form
-  function submitDemo() {
-    const name = document.getElementById('fname').value.trim();
-    const email = document.getElementById('email').value.trim();
-    if (!name || !email) {
-      alert('Please fill in at least your name and email.');
-      return;
-    }
-    document.getElementById('success-msg').style.display = 'block';
-    document.querySelector('.form-submit').disabled = true;
-    document.querySelector('.form-submit').textContent = 'Request Sent ✓';
-  }
-
-  // FAQ accordion
   function toggleFaq(el) {
     const item = el.closest('.faq-item');
     const isOpen = item.classList.contains('open');
@@ -1925,28 +841,13 @@
     if (!isOpen) item.classList.add('open');
   }
 
-  // Hero mockup tab switcher
-  function showTab(name) {
-    ['dash','analytics','capacity','booking'].forEach(t => {
-      const panel = document.getElementById('panel-'+t);
-      const btn = document.getElementById('tab-'+t);
-      if (panel) panel.style.display = (t === name) ? 'block' : 'none';
-      if (btn) {
-        btn.style.background   = (t === name) ? '#FAF7F2' : '#FFFFFF';
-        btn.style.color        = (t === name) ? '#C4856A' : '#8A7A72';
-        btn.style.borderBottom = (t === name) ? '2px solid #C4856A' : '2px solid transparent';
-        btn.style.fontWeight   = (t === name) ? '600' : '400';
-      }
-    });
-  }
+  document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('label-monthly').classList.add('active');
+  });
 
-  // Scroll reveal
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        observer.unobserve(e.target);
-      }
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
     });
   }, { threshold: 0.12 });
 
