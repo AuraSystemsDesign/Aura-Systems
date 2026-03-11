@@ -306,6 +306,12 @@
   .vs-saving-val { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: #4CAF50; font-weight: 600; }
   .vs-saving-sub { font-size: 0.7rem; color: rgba(250,247,242,0.4); margin-top: 0.2rem; }
 
+  /* Responsive utility classes for inline grids */
+  .two-col-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .two-col-grid-lg { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  .showcase-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .who-inner-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+
   @media (max-width: 900px) {
     nav { padding: 1.25rem 2rem; }
     .nav-links { display: none; }
@@ -323,6 +329,12 @@
     footer { grid-template-columns: 1fr; padding: 3rem 2rem; }
     .vs-banner { padding: 2rem; gap: 1.5rem; }
     .pf-grid { grid-template-columns: 1fr 1fr; }
+
+    /* Fix inline grids that squeeze content on mobile */
+    .two-col-grid,
+    .two-col-grid-lg,
+    .showcase-grid,
+    .who-inner-grid { grid-template-columns: 1fr; gap: 1.5rem; }
   }
 </style>
 </head>
@@ -428,7 +440,7 @@
   <h2>Everything visible,<br><em>all in one system</em></h2>
   <p class="section-sub">A real look at what your branded business platform includes — from client bookings to staff management.</p>
 
-  <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem;" class="reveal">
+  <div class="showcase-grid reveal">
     <!-- WINDOW 1: Dashboard -->
     <div style="background:#fff; border-radius:12px; box-shadow:0 8px 40px rgba(28,20,16,0.1); overflow:hidden; border:1px solid rgba(196,133,106,0.15);">
       <div style="background:#1C1410; padding:0.6rem 1rem; display:flex; align-items:center; gap:0.4rem;">
@@ -556,7 +568,7 @@
 
 <!-- PROBLEM -->
 <section id="problem" style="background: var(--white);">
-  <div style="display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center;">
+  <div class="two-col-grid-lg">
     <div>
       <div class="section-label">The problem</div>
       <h2>Most beauty businesses rely on<br><em>platforms they don't control</em></h2>
@@ -573,7 +585,7 @@
 
 <!-- SOLUTION -->
 <section id="solution" style="background: var(--cream);">
-  <div style="display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center;">
+  <div class="two-col-grid-lg">
     <div style="display:grid; gap:1rem;">
       <div style="background:var(--white); border:1px solid rgba(196,133,106,0.18); border-radius:8px; padding:1.5rem; display:flex; align-items:flex-start; gap:1rem;"><span style="font-size:1.5rem; flex-shrink:0;">🌐</span><div><div style="font-weight:500; color:#1C1410; margin-bottom:0.3rem; font-size:0.9rem;">Your own branded website</div><div style="font-size:0.82rem; color:#8A7A72; line-height:1.6;">A custom site designed around your brand — not a template, not a directory listing.</div></div></div>
       <div style="background:var(--white); border:1px solid rgba(196,133,106,0.18); border-radius:8px; padding:1.5rem; display:flex; align-items:flex-start; gap:1rem;"><span style="font-size:1.5rem; flex-shrink:0;">📅</span><div><div style="font-weight:500; color:#1C1410; margin-bottom:0.3rem; font-size:0.9rem;">Booking built directly in</div><div style="font-size:0.82rem; color:#8A7A72; line-height:1.6;">Clients book, pay deposits and manage appointments without ever leaving your site.</div></div></div>
@@ -605,14 +617,14 @@
 
 <!-- WHO THIS IS FOR -->
 <section id="who" style="background: var(--deep); color: var(--cream);">
-  <div style="display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center;">
+  <div class="two-col-grid-lg">
     <div>
       <div class="section-label" style="color: var(--blush);">Who this is for</div>
       <h2 style="color: var(--cream);">Designed for<br><em>beauty professionals</em></h2>
       <p style="color: rgba(250,247,242,0.6); font-size:1rem; line-height:1.8; font-weight:300; margin-bottom:1.5rem;">Aura Systems Design works with beauty businesses that want a professional online presence and a smarter way to manage bookings.</p>
       <p style="color: rgba(250,247,242,0.45); font-size:0.9rem; font-weight:300; line-height:1.7;">Whether you are working independently or running a growing salon, your website should support the way your business operates.</p>
     </div>
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.75rem;" class="reveal">
+    <div class="who-inner-grid reveal">
       <div style="border: 1px solid rgba(232,197,176,0.2); border-radius: 6px; padding: 1.25rem; display:flex; align-items:center; gap:0.75rem;"><span style="font-size:1.3rem;">💇</span><span style="font-size:0.88rem; color:rgba(250,247,242,0.85);">Beauty salons</span></div>
       <div style="border: 1px solid rgba(232,197,176,0.2); border-radius: 6px; padding: 1.25rem; display:flex; align-items:center; gap:0.75rem;"><span style="font-size:1.3rem;">🏥</span><span style="font-size:0.88rem; color:rgba(250,247,242,0.85);">Aesthetic clinics</span></div>
       <div style="border: 1px solid rgba(232,197,176,0.2); border-radius: 6px; padding: 1.25rem; display:flex; align-items:center; gap:0.75rem;"><span style="font-size:1.3rem;">✂️</span><span style="font-size:0.88rem; color:rgba(250,247,242,0.85);">Hair stylists</span></div>
