@@ -255,14 +255,29 @@
   .reveal.visible { opacity: 1; transform: none; }
 
   /* BILLING TOGGLE */
-  .billing-toggle-wrapper { display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 3rem; }
+  .billing-toggle-wrapper { display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 3rem; flex-wrap: wrap; }
   .toggle-label { font-size: 0.88rem; color: var(--muted); font-weight: 400; display: flex; align-items: center; gap: 0.5rem; }
   .toggle-label.active { color: var(--deep); font-weight: 500; }
   .save-badge { background: var(--rose); color: white; font-size: 0.65rem; padding: 0.2rem 0.5rem; border-radius: 20px; letter-spacing: 0.05em; font-weight: 500; }
-  .billing-toggle { width: 52px; height: 28px; background: var(--blush); border-radius: 20px; cursor: pointer; position: relative; transition: background 0.3s; }
+  .billing-toggle { width: 52px; height: 28px; background: var(--blush); border-radius: 20px; cursor: pointer; position: relative; transition: background 0.3s; flex-shrink: 0; }
   .billing-toggle.annual { background: var(--rose); }
   .toggle-knob { width: 22px; height: 22px; background: white; border-radius: 50%; position: absolute; top: 3px; left: 3px; transition: transform 0.3s; box-shadow: 0 2px 6px rgba(0,0,0,0.15); }
   .billing-toggle.annual .toggle-knob { transform: translateX(24px); }
+
+  /* TOGGLE PROMPT */
+  .toggle-prompt-wrapper { display: flex; flex-direction: column; align-items: center; margin-bottom: 1.25rem; gap: 0.4rem; }
+  .toggle-prompt { display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, rgba(196,133,106,0.12), rgba(184,154,110,0.1)); border: 1px solid rgba(196,133,106,0.3); border-radius: 30px; padding: 0.45rem 1.1rem; font-size: 0.78rem; color: var(--rose); font-weight: 500; letter-spacing: 0.04em; animation: promptPulse 2.5s ease-in-out infinite; cursor: pointer; }
+  .toggle-prompt .prompt-arrow { font-size: 1rem; animation: promptBounce 1.2s ease-in-out infinite; display: inline-block; }
+  .toggle-prompt-sub { font-size: 0.72rem; color: var(--muted); font-weight: 300; }
+
+  @keyframes promptPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(196,133,106,0); }
+    50% { box-shadow: 0 0 0 6px rgba(196,133,106,0.12); }
+  }
+  @keyframes promptBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(4px); }
+  }
   .price-setup small { font-size: 0.7rem; font-weight: 300; color: var(--muted); font-family: 'DM Sans', sans-serif; }
   .package-card.featured .price-setup small { color: rgba(250,247,242,0.5); }
   .price-commitment { display: block; font-size: 0.72rem; color: var(--rose); margin-top: 0.3rem; font-weight: 500; min-height: 1rem; }
@@ -335,6 +350,12 @@
     .two-col-grid-lg,
     .showcase-grid,
     .who-inner-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+
+    /* Toggle prompt mobile */
+    .toggle-prompt { font-size: 0.74rem; padding: 0.4rem 0.9rem; text-align: center; }
+    .toggle-prompt-sub { font-size: 0.68rem; text-align: center; }
+    .billing-toggle-wrapper { gap: 0.75rem; }
+    .toggle-label { font-size: 0.8rem; }
   }
 </style>
 </head>
@@ -641,9 +662,23 @@
   <h2>Choose the system that<br><em>fits your business</em></h2>
   <p class="section-sub">Flexible packages designed to suit different stages of business growth. Every package is fully built and managed for you — no tech knowledge needed.</p>
 
+  <div class="toggle-prompt-wrapper">
+    <div class="toggle-prompt" onclick="toggleBilling()" role="button" aria-label="Switch to annual billing and save 20%">
+      <span>💡 Switch to annual &amp; save ~20% on every plan</span>
+      <span class="prompt-arrow">↓</span>
+    </div>
+    <span class="toggle-prompt-sub">Toggle below to see your annual prices</span>
+  </div>
+
   <div class="billing-toggle-wrapper">
     <span class="toggle-label active" id="label-monthly">Monthly Rolling</span>
-    <div class="billing-toggle" id="billingToggle" onclick="toggleBilling()">
+    <div class="billing-toggle" id="billingToggle"
+      onclick="toggleBilling()"
+      onkeydown="if(event.key==='Enter'||event.key===' ')toggleBilling()"
+      role="switch"
+      aria-checked="false"
+      tabindex="0"
+      aria-label="Toggle between monthly and annual billing">
       <div class="toggle-knob" id="toggle-knob"></div>
     </div>
     <span class="toggle-label" id="label-annual">12 Month Plan <span class="save-badge">Save ~20%</span></span>
@@ -657,8 +692,7 @@
       <div class="package-title">Presence</div>
       <div class="package-price">
         <span class="price-setup">£499 <small>one-off setup</small></span>
-        <span class="price-monthly">+ <span class="price-val" data-monthly="£79" data-annual="£63">£79</span> / month</span>
-        <span class="price-commitment" id="commitment-presence"></span>
+        <span class="price-monthly">+ <span class="price-val" data-monthly="£49" data-annual="£39">£49</span> / month</span>
       </div>
       <div class="package-section-label">We build you</div>
       <ul class="package-features">
@@ -673,7 +707,7 @@
       <ul class="package-features">
         <li>Hosting &amp; domain management</li>
         <li>Security &amp; software updates</li>
-        <li>Monthly content &amp; text updates (up to 2 changes/mo)</li>
+        <li>Up to 2 content &amp; price updates per month via owner portal</li>
         <li>Performance monitoring</li>
         <li>Email &amp; WhatsApp support</li>
       </ul>
@@ -686,9 +720,10 @@
       <div class="package-name">Growth</div>
       <div class="package-title">Bookable</div>
       <div class="package-price">
-        <span class="price-setup">£799 <small>one-off setup</small></span>
+        <span class="price-setup">£999 <small>one-off setup</small></span>
+        <span class="price-monthly" style="color:var(--blush); font-size:0.75rem; margin-top:0.2rem; display:block;">🎁 Includes Stripe WisePOS E card terminal (worth £179)</span>
         <span class="price-monthly">+ <span class="price-val" data-monthly="£119" data-annual="£95">£119</span> / month</span>
-        <span class="stripe-notice">+ Stripe processing fees (1.5% + 20p per transaction)</span>
+        <span class="stripe-notice">+ Stripe processing fees (1.5% + 20p online · 1.4% + 10p in-person)</span>
         <span class="price-commitment" id="commitment-bookable"></span>
       </div>
       <div class="package-section-label">We build you</div>
@@ -698,13 +733,15 @@
         <li>Service menu with live pricing &amp; durations</li>
         <li>Stripe deposit collection to reduce no-shows</li>
         <li>Automated booking confirmations &amp; SMS reminders</li>
+        <li>Stripe WisePOS E reception terminal — configured &amp; ready</li>
         <li>Cancellation &amp; rescheduling policy setup</li>
       </ul>
       <div class="package-section-label">Monthly subscription includes</div>
       <ul class="package-features">
         <li>Everything in Presence monthly plan</li>
         <li>Booking system management &amp; updates</li>
-        <li>Service &amp; pricing updates via owner portal</li>
+        <li>Service &amp; pricing updates via owner portal — self-manage anytime</li>
+        <li>Up to 200 SMS reminders/month included</li>
         <li>Deposit &amp; cancellation policy updates</li>
         <li>Priority email &amp; WhatsApp support</li>
       </ul>
@@ -716,10 +753,9 @@
       <div class="package-name">Pro</div>
       <div class="package-title">Full Suite</div>
       <div class="package-price">
-        <span class="price-setup">£1,199 <small>one-off setup</small></span>
-        <span class="price-monthly">+ <span class="price-val" data-monthly="£199" data-annual="£159">£199</span> / month</span>
-        <span class="stripe-notice">+ Stripe processing fees (1.5% + 20p per transaction)</span>
-        <span class="price-commitment" id="commitment-suite"></span>
+        <span class="price-setup">£1,399 <small>one-off setup</small></span>
+        <span class="price-monthly" style="color:var(--rose); font-size:0.75rem; margin-top:0.2rem; display:block;">🎁 Includes Stripe WisePOS E card terminal (worth £179)</span>
+        <span class="price-monthly">+ <span class="price-val" data-monthly="£179" data-annual="£143">£179</span> / month</span>
       </div>
       <div class="package-section-label">We build you</div>
       <ul class="package-features">
@@ -733,9 +769,10 @@
       <div class="package-section-label">Monthly subscription includes</div>
       <ul class="package-features">
         <li>Everything in Bookable monthly plan</li>
+        <li>Up to 500 SMS reminders/month included</li>
         <li>CRM setup, maintenance &amp; ongoing support</li>
         <li>Monthly analytics report sent to you</li>
-        <li>Unlimited content &amp; pricing updates</li>
+        <li>Unlimited content &amp; pricing updates via owner portal</li>
         <li>Priority support — fastest response times</li>
       </ul>
       <a href="#demo" class="btn-package" onclick="selectPackage('Full Suite')">Get Started</a>
@@ -750,8 +787,10 @@
       <div class="pf-item"><span class="pf-icon">✓</span> Hosted &amp; managed by us</div>
       <div class="pf-item"><span class="pf-icon">✓</span> SSL security certificate</div>
       <div class="pf-item"><span class="pf-icon">✓</span> Mobile &amp; tablet optimised</div>
-      <div class="pf-item"><span class="pf-icon">✓</span> Monthly updates included</div>
+      <div class="pf-item"><span class="pf-icon">✓</span> Self-manage prices via owner portal</div>
       <div class="pf-item"><span class="pf-icon">✓</span> Your data is always yours</div>
+      <div class="pf-item"><span class="pf-icon">✓</span> No commission. Ever.</div>
+      <div class="pf-item"><span class="pf-icon">✓</span> SMS reminders included monthly</div>
     </div>
   </div>
 
@@ -763,7 +802,9 @@
       On the 12 month plan, early cancellation is charged at 50% of remaining months.
       On cancellation, your website stays live — booking &amp; CRM systems deactivate. Your client data is always exported and returned to you before deactivation.
       <br><br>
-      <strong>Stripe processing fees:</strong> Bookable and Full Suite packages use Stripe for payment processing. Standard UK card fees of 1.5% + 20p per transaction apply and are charged directly by Stripe to your connected account — not by Aura Systems Design.
+      <strong>Stripe processing fees:</strong> Bookable and Full Suite packages use Stripe for payment processing. Online card fees of 1.5% + 20p per transaction apply. In-person payments via the included WisePOS E terminal are charged at 1.4% + 10p per transaction. All fees are charged directly by Stripe to your connected account — not by Aura Systems Design.
+      <br><br>
+      <strong>SMS reminders:</strong> Bookable includes up to 200 SMS reminders per month. Full Suite includes up to 500 SMS reminders per month. Additional SMS usage beyond your allowance is charged at 5p per message. SMS allowances reset monthly.
     </div>
   </div>
 </section>
@@ -881,7 +922,9 @@
 
   function toggleBilling() {
     isAnnual = !isAnnual;
-    document.getElementById('billingToggle').classList.toggle('annual', isAnnual);
+    const toggle = document.getElementById('billingToggle');
+    toggle.classList.toggle('annual', isAnnual);
+    toggle.setAttribute('aria-checked', isAnnual ? 'true' : 'false');
     document.getElementById('label-monthly').classList.toggle('active', !isAnnual);
     document.getElementById('label-annual').classList.toggle('active', isAnnual);
     document.querySelectorAll('.price-val').forEach(el => {
@@ -892,6 +935,9 @@
       const el = document.getElementById(id);
       if (el) el.textContent = msg;
     });
+    // Hide the prompt nudge once user has interacted
+    const prompt = document.querySelector('.toggle-prompt-wrapper');
+    if (prompt) { prompt.style.transition = 'opacity 0.4s'; prompt.style.opacity = '0'; setTimeout(() => prompt.style.display = 'none', 400); }
   }
 
   function selectPackage(pkg) {
