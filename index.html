@@ -256,6 +256,26 @@
   #demo .section-label { justify-content: center; }
   #demo .section-label::before { display: none; }
   .demo-form-wrapper { max-width: 600px; margin: 0 auto; position: relative; z-index: 1; }
+  .enquiry-form { background: rgba(250,247,242,0.06); border: 1px solid rgba(250,247,242,0.12); border-radius: 8px; padding: 2.5rem; text-align: left; }
+  .enquiry-form .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .enquiry-form .form-group { display: flex; flex-direction: column; gap: 0.45rem; margin-bottom: 1.25rem; }
+  .enquiry-form .form-group:last-of-type { margin-bottom: 1.75rem; }
+  .enquiry-form label { font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--blush); font-weight: 500; }
+  .enquiry-form input, .enquiry-form select, .enquiry-form textarea { background: rgba(250,247,242,0.08); border: 1px solid rgba(250,247,242,0.18); border-radius: 3px; padding: 0.8rem 1rem; color: var(--cream); font-family: 'DM Sans', sans-serif; font-size: 0.9rem; width: 100%; box-sizing: border-box; transition: border-color 0.3s, background 0.3s; outline: none; }
+  .enquiry-form input::placeholder, .enquiry-form textarea::placeholder { color: rgba(250,247,242,0.3); }
+  .enquiry-form select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23E8C5B0' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; padding-right: 2.5rem; cursor: pointer; }
+  .enquiry-form select option { background: var(--deep); color: var(--cream); }
+  .enquiry-form input:focus, .enquiry-form select:focus, .enquiry-form textarea:focus { border-color: var(--rose); background: rgba(196,133,106,0.1); }
+  .enquiry-form textarea { resize: vertical; min-height: 110px; }
+  .enquiry-form .btn-submit { width: 100%; background: var(--rose); color: var(--cream); border: none; border-radius: 2px; padding: 1rem; font-family: 'DM Sans', sans-serif; font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; transition: background 0.3s, transform 0.2s; font-weight: 500; }
+  .enquiry-form .btn-submit:hover { background: #b37560; transform: translateY(-2px); }
+  .enquiry-form .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+  .form-success { display: none; text-align: center; padding: 3rem 1rem; }
+  .form-success .success-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+  .form-success h3 { color: var(--cream); font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 300; margin-bottom: 0.75rem; }
+  .form-success p { color: rgba(250,247,242,0.6); font-size: 0.9rem; line-height: 1.6; }
+  .form-error-msg { display: none; color: #e07070; font-size: 0.8rem; margin-top: 1rem; text-align: center; }
+  @media (max-width: 600px) { .enquiry-form .form-row { grid-template-columns: 1fr; } .enquiry-form { padding: 1.75rem 1.25rem; } }
 
   #faq { background: var(--white); }
   .faq-list { max-width: 720px; }
@@ -422,7 +442,7 @@
     .billing-toggle-wrapper { gap: 0.75rem; }
     .toggle-label { font-size: 0.8rem; }
     #demo { padding: 4rem 2rem; }
-    #demo iframe { height: 750px; }
+    #demo { padding: 4rem 1.5rem; }
   }
 
   @media (max-width: 480px) {
@@ -902,12 +922,101 @@
 
 <!-- DEMO CTA -->
 <section id="demo">
-  <div class="section-label">Book a demo</div>
+  <div class="section-label">Get in touch</div>
   <h2>Ready to build your<br><em>beauty business platform?</em></h2>
-  <p class="section-sub">If you want a website that does more than just display your services, Aura Systems Design can create a complete online system tailored to your business.</p>
+  <p class="section-sub">Send us an enquiry and we'll get back to you within 1 business day to discuss your project.</p>
   <div class="demo-form-wrapper">
-    <p style="color:var(--blush);font-size:0.85rem;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1.5rem;font-weight:500;">Book Your Private Demo</p>
-    <iframe src="https://app.smartsuite.com/form/s87a62l9/pIxwivlpLa" frameborder="0" width="100%" height="700" loading="lazy" style="border-radius:8px;border:1px solid rgba(250,247,242,0.15);" title="Book a Demo — Aura Systems Design" allow="fullscreen"></iframe>
+    <p style="color:var(--blush);font-size:0.85rem;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1.5rem;font-weight:500;">Send Your Enquiry</p>
+    <div class="enquiry-form" id="enquiry-form-container">
+      <form id="enquiry-form" action="https://formspree.io/f/aurasystemsdesign" method="POST" novalidate>
+        <input type="hidden" name="_replyto" value="">
+        <input type="hidden" name="_subject" value="New Enquiry — Aura Systems Design">
+        <input type="hidden" name="_to" value="aurasystemsdesign@gmail.com">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="enq-name">Your Name *</label>
+            <input type="text" id="enq-name" name="name" placeholder="Jane Smith" required>
+          </div>
+          <div class="form-group">
+            <label for="enq-email">Email Address *</label>
+            <input type="email" id="enq-email" name="email" placeholder="jane@yoursalon.co.uk" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="enq-phone">Phone Number</label>
+            <input type="tel" id="enq-phone" name="phone" placeholder="+44 7700 000000">
+          </div>
+          <div class="form-group">
+            <label for="enq-business">Business Name</label>
+            <input type="text" id="enq-business" name="business" placeholder="Your Salon Name">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="enq-package">Package of Interest</label>
+          <select id="enq-package" name="package">
+            <option value="" disabled selected>Select a package…</option>
+            <option value="Presence">Presence — From £499 + £49/mo</option>
+            <option value="Bookable">Bookable — From £799 + £79/mo</option>
+            <option value="Full Suite">Full Suite — From £1,199 + £99/mo</option>
+            <option value="Aura Complete">Aura Complete — From £1,999 + £199/mo</option>
+            <option value="Not sure">Not sure yet — help me choose</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="enq-message">Tell Us About Your Business *</label>
+          <textarea id="enq-message" name="message" placeholder="Tell us a bit about your salon, what you're looking for, and any questions you have…" required></textarea>
+        </div>
+        <button type="submit" class="btn-submit" id="enq-submit">Send Enquiry →</button>
+        <p class="form-error-msg" id="enq-error">Something went wrong. Please try again or email us directly at aurasystemsdesign@gmail.com</p>
+      </form>
+      <div class="form-success" id="enq-success">
+        <div class="success-icon">✦</div>
+        <h3>Thank you for your enquiry</h3>
+        <p>We've received your message and will be in touch within 1 business day.<br>In the meantime, feel free to explore our packages above.</p>
+      </div>
+    </div>
+    <script>
+    (function() {
+      var form = document.getElementById('enquiry-form');
+      var btn = document.getElementById('enq-submit');
+      var successEl = document.getElementById('enq-success');
+      var errorEl = document.getElementById('enq-error');
+      if (!form) return;
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var name = document.getElementById('enq-name').value.trim();
+        var email = document.getElementById('enq-email').value.trim();
+        var message = document.getElementById('enq-message').value.trim();
+        if (!name || !email || !message) {
+          errorEl.textContent = 'Please fill in all required fields (name, email, and message).';
+          errorEl.style.display = 'block';
+          return;
+        }
+        errorEl.style.display = 'none';
+        btn.disabled = true;
+        btn.textContent = 'Sending…';
+        var data = new FormData(form);
+        fetch('https://formspree.io/f/maqpvaev', {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        }).then(function(res) {
+          if (res.ok) {
+            form.style.display = 'none';
+            successEl.style.display = 'block';
+          } else {
+            throw new Error('Server error');
+          }
+        }).catch(function() {
+          btn.disabled = false;
+          btn.textContent = 'Send Enquiry →';
+          errorEl.textContent = 'Something went wrong. Please try again or email us directly at aurasystemsdesign@gmail.com';
+          errorEl.style.display = 'block';
+        });
+      });
+    })();
+    </script>
   </div>
 </section>
 
